@@ -4,27 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Polarix - Menú Digital</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Chewy&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet" />
     <style>
-        /* ===== RESET ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* ===== FUENTES PERSONALIZADAS (desde carpeta Fonts/) ===== */
+        @font-face {
+            font-family: 'Bunny Hop';
+            src: url('Font/BunnyHopRegular.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
         }
 
-        html {
-            scroll-behavior: smooth;
+        @font-face {
+            font-family: 'Quarantype Hangout';
+            src: url('Font/quarantype-hangout.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
         }
 
-        body {
-            font-family: 'Lato', sans-serif;
-            background: #0c0c0c;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            color: #333333;
+        @font-face {
+            font-family: 'Lato';
+            src: url('Font/Lato-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Marykate';
+            src: url('Font/Marykate-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
         }
 
         /* ===== VARIABLES ===== */
@@ -45,13 +53,35 @@
             --space-lg: 2rem;
             --space-xl: 3rem;
             
-            /* TODAS LAS FUENTES USAN LATO */
-            --font-menu: 'Lato', sans-serif;
-            --font-product: 'Lato', sans-serif;
-            --font-category: 'Lato', sans-serif;
-            --font-clean: 'Lato', sans-serif;
+            /* ===== FUENTES ORIGINALES (NO MODIFICADAS) ===== */
+            --font-menu: 'Bunny Hop', Impact, sans-serif;
+            --font-product: 'Chewy', cursive;
+            --font-category: 'Quarantype Hangout', cursive;
+            --font-clean: 'Quicksand', sans-serif;
+            /* SOLO CAMBIAMOS POPPINS → LATO */
             --font-poppins: 'Lato', sans-serif;
-            --font-script: 'Lato', sans-serif;
+            --font-script: 'Marykate', 'Quarantype Hangout', 'Chewy', 'Quicksand', Arial, sans-serif;
+        }
+
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-clean);
+            background: #0c0c0c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text);
         }
 
         /* ===== TELÉFONO ===== */
@@ -255,7 +285,7 @@
         }
 
         .home-slogan-text {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-clean);
             font-size: 1.15rem;
             line-height: 1.3;
             font-weight: 700;
@@ -327,12 +357,11 @@
         }
 
         .cat-btn-title {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-product);
             color: var(--red-polarix);
             font-size: 2rem;
             line-height: 1;
             margin-bottom: 4px;
-            font-weight: 900;
             transition: color 0.3s ease;
         }
 
@@ -341,7 +370,7 @@
         }
 
         .cat-btn-desc {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-clean);
             color: #6b6b6b;
             font-weight: 700;
             font-size: 0.82rem;
@@ -372,7 +401,7 @@
             letter-spacing: 2px;
             font-size: 0.7rem;
             font-weight: 700;
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-poppins);
         }
 
         /* ================= VISTAS INTERNAS ================= */
@@ -401,7 +430,7 @@
             z-index: 0;
         }
 
-        /* ===== ADORNOS DECORATIVOS ===== */
+        /* ===== ADORNOS DECORATIVOS (los mismos que en home) con animaciones ===== */
         .decor-inner {
             position: absolute;
             pointer-events: none;
@@ -442,7 +471,7 @@
             animation: pulse 4s ease-in-out infinite;
         }
 
-        /* ===== ADORNOS MICHELADAS ===== */
+        /* ===== ADORNOS ORIGINALES (MICHELADAS) con animaciones ===== */
         .deco-sparkle {
             position: absolute;
             z-index: 5;
@@ -488,7 +517,7 @@
         }
 
         .txt-menu {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-menu);
             font-size: 4.8rem;
             color: white;
             text-transform: uppercase;
@@ -500,18 +529,16 @@
             position: relative;
             z-index: 2;
             animation: fadeIn 0.6s ease;
-            font-weight: 900;
         }
 
         .menu-text {
             display: inline;
         }
 
-        /* ===== MENU-U CON TILDE VISIBLE ===== */
         menu-u {
             position: relative;
             display: inline-block;
-            padding: 0 0.08em;
+            padding: 0 0.06em;
             overflow: visible;
         }
 
@@ -520,10 +547,9 @@
             position: absolute;
             left: 50%;
             top: 0;
-            transform: translate(-50%, -50%);
-            font-size: 1.8em;
-            font-family: 'Lato', sans-serif !important;
-            font-weight: 900;
+            transform: translate(-50%, -60%);
+            font-size: 1.4em;
+            font-family: var(--font-poppins);
             color: inherit;
             text-shadow: inherit;
             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
@@ -532,8 +558,15 @@
             display: block;
         }
 
+        @media (max-width: 430px) {
+            menu-u::after {
+                font-size: 1.6em;
+                transform: translate(-50%, -65%);
+            }
+        }
+
         .txt-liquid {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-category);
             font-size: 3.6rem;
             color: white;
             display: block;
@@ -544,7 +577,6 @@
             position: relative;
             z-index: 2;
             animation: slideUp 0.5s ease 0.1s both;
-            font-weight: 900;
         }
 
         .nav-back-container {
@@ -559,7 +591,7 @@
             background: white;
             border: 3px solid var(--yellow-polarix);
             color: var(--red-polarix);
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-poppins);
             text-transform: uppercase;
             padding: 0.5rem 1.5rem;
             border-radius: 50px;
@@ -619,13 +651,23 @@
         }
 
         .intro-slogan {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-script);
             color: var(--red-polarix);
             font-size: 1.6rem;
             margin-bottom: 0;
-            font-weight: 900;
+            font-weight: normal;
             text-transform: uppercase;
             letter-spacing: 1px;
+        }
+
+        /* helper class to render inverted punctuation in a robust fallback font */
+        .invert {
+            font-family: var(--font-poppins) !important;
+            display: inline;
+            vertical-align: baseline;
+            margin-right: 0.03em;
+            font-size: inherit;
+            line-height: inherit;
         }
 
         /* ===== BLOQUE TAMAÑO / PRECIO ===== */
@@ -662,9 +704,9 @@
         }
 
         .col-title {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-script);
             font-size: 1.6rem;
-            font-weight: 900;
+            font-weight: normal;
             color: var(--red-polarix);
             text-transform: uppercase;
             margin-bottom: 0.5rem;
@@ -681,9 +723,9 @@
 
         .size-value,
         .price-value {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-script);
             font-size: 2rem;
-            font-weight: 900;
+            font-weight: normal;
             color: var(--red-polarix);
             background: var(--yellow-polarix);
             padding: 0.2rem 1.2rem;
@@ -729,7 +771,7 @@
         }
 
         .includes-title {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-poppins);
             font-size: 0.85rem;
             font-weight: 700;
             color: #666;
@@ -737,7 +779,7 @@
         }
 
         .includes-items {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-poppins);
             font-size: 0.95rem;
             font-weight: 500;
             color: var(--text);
@@ -773,14 +815,14 @@
         }
 
         .option-title {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-script);
             font-size: 1.35rem;
             color: var(--red-polarix);
             text-transform: uppercase;
             letter-spacing: 1.2px;
             margin-bottom: 0.4rem;
             text-align: center;
-            font-weight: 900;
+            font-weight: normal;
         }
 
         .option-grid {
@@ -791,7 +833,7 @@
         }
 
         .option-item {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-poppins);
             font-size: 0.98rem;
             font-weight: 700;
             color: var(--text);
@@ -842,7 +884,6 @@
             grid-column: span 2;
             padding-top: 0.1rem;
             letter-spacing: 0.3px;
-            font-family: 'Lato', sans-serif;
         }
 
         /* ===== FUSIONES FRUTALES ===== */
@@ -865,18 +906,18 @@
         }
 
         .fusiones-title {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-script);
             font-size: 1.8rem;
             color: var(--red-polarix);
             text-transform: uppercase;
             text-align: center;
             letter-spacing: 1px;
-            font-weight: 900;
+            font-weight: normal;
             margin-bottom: 0.3rem;
         }
 
         .fusiones-subtitle {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-poppins);
             font-size: 1rem;
             font-weight: 700;
             color: var(--text);
@@ -885,7 +926,7 @@
         }
 
         .fusiones-note {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-poppins);
             font-size: 0.8rem;
             font-weight: 400;
             color: #888;
@@ -940,7 +981,7 @@
         }
 
         .fusion-item .sabor {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-poppins);
             font-size: 0.75rem;
             font-weight: 700;
             color: var(--red-polarix);
@@ -949,7 +990,7 @@
         }
 
         .fusion-item .separator {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-poppins);
             font-size: 0.7rem;
             color: var(--red-polarix);
             font-weight: 300;
@@ -976,18 +1017,18 @@
         }
 
         .nevado-slogan {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-script);
             color: var(--red-polarix);
             font-size: 1.6rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-weight: 900;
+            font-weight: normal;
             margin-bottom: 0.3rem;
             line-height: 1.2;
         }
 
         .nevado-desc {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-poppins);
             font-size: 0.9rem;
             font-weight: 500;
             color: #666;
@@ -1012,16 +1053,15 @@
         }
 
         .nevado-price-row .size-label {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-script);
             font-size: 1.2rem;
             color: var(--red-polarix);
             text-transform: uppercase;
             margin-bottom: 0.2rem;
-            font-weight: 900;
         }
 
         .nevado-price-row .price-value {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-script);
             font-size: 2rem;
             color: var(--red-polarix);
             background: var(--yellow-polarix);
@@ -1030,7 +1070,6 @@
             display: inline-block;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: default;
-            font-weight: 900;
         }
 
         .nevado-price-row .price-value:hover {
@@ -1059,12 +1098,12 @@
         }
 
         .fishbowl-slogan {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-script);
             color: var(--red-polarix);
             font-size: 1.6rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-weight: 900;
+            font-weight: normal;
             margin-bottom: 0.8rem;
             line-height: 1.2;
         }
@@ -1086,16 +1125,15 @@
         }
 
         .fishbowl-prices .size-label {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-script);
             font-size: 1.2rem;
             color: var(--red-polarix);
             text-transform: uppercase;
             margin-bottom: 0.2rem;
-            font-weight: 900;
         }
 
         .fishbowl-prices .price-value {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-script);
             font-size: 2rem;
             color: var(--red-polarix);
             background: var(--yellow-polarix);
@@ -1104,7 +1142,6 @@
             display: inline-block;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: default;
-            font-weight: 900;
         }
 
         .fishbowl-prices .price-value:hover {
@@ -1147,7 +1184,7 @@
         }
 
         .fishbowl-image-item .image-name {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-poppins);
             font-size: 0.75rem;
             font-weight: 700;
             color: var(--red-polarix);
@@ -1206,7 +1243,7 @@
         }
 
         .product-card .product-name {
-            font-family: 'Lato', sans-serif;
+            font-family: var(--font-product);
             color: var(--red-polarix);
             font-size: 1.2rem;
             padding: 0.6rem 0.2rem 0.2rem;
@@ -1215,7 +1252,6 @@
             background: white;
             border-top: 2px solid var(--yellow-polarix);
             transition: color 0.3s ease;
-            font-weight: 900;
         }
 
         .product-card:hover .product-name {
@@ -1297,30 +1333,10 @@
                 border: none;
             }
 
-            .txt-menu {
-                font-size: 4rem;
-            }
-
-            .txt-liquid {
-                font-size: 3rem;
-                margin-top: 0.8rem;
-            }
-
             .size-price-block {
                 grid-template-columns: 1fr 1fr;
                 padding: 1rem 0.8rem;
                 gap: 0.6rem;
-            }
-
-            .col-title {
-                font-size: 1.2rem;
-            }
-
-            .size-value,
-            .price-value {
-                font-size: 1.2rem;
-                min-width: 90px;
-                padding: 0.18rem 0.9rem;
             }
 
             .product-grid {
@@ -1338,14 +1354,37 @@
                 padding: 0.35rem 0.2rem 0.1rem;
             }
 
+            .size-col,
+            .price-col {
+                width: auto;
+            }
+
+            .col-title {
+                font-size: 1.2rem;
+            }
+
+            .size-value,
+            .price-value {
+                font-size: 1.2rem;
+                min-width: 90px;
+                padding: 0.18rem 0.9rem;
+            }
+
             .option-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 0.35rem 0.35rem;
             }
 
             .option-item {
+                flex-direction: column;
+                text-align: center;
                 font-size: 0.98rem;
                 padding: 0.35rem 0.2rem;
+            }
+
+            .option-item .option-price {
+                display: inline-block;
+                margin-top: 0.15rem;
             }
 
             .option-title {
@@ -1354,6 +1393,44 @@
 
             .includes-items {
                 font-size: 0.95rem;
+            }
+
+            .txt-menu {
+                font-size: 4rem;
+            }
+
+            .txt-liquid {
+                font-size: 3rem;
+                margin-top: 0.8rem;
+            }
+
+            .size-value,
+            .price-value {
+                font-size: 1.8rem;
+                min-width: 110px;
+            }
+
+            menu-u::after {
+                font-size: 0.8em;
+                top: -0.7em;
+                right: -0.1em;
+            }
+
+            .modal-content {
+                max-width: 95%;
+                max-height: 95%;
+            }
+
+            .option-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .option-item.full-width {
+                grid-column: 1;
+            }
+
+            .option-note {
+                grid-column: 1;
             }
 
             .michelada-options-card {
@@ -1488,140 +1565,9 @@
                 right: 5px;
                 bottom: 10px;
             }
-
-            .modal-content {
-                max-width: 95%;
-                max-height: 95%;
-            }
-
-            .home-logo-img {
-                max-width: 250px;
-                max-height: 140px;
-            }
-
-            .home-slogan-text {
-                font-size: 0.95rem;
-            }
-
-            .category-row-btn {
-                padding: 12px 16px;
-            }
-
-            .cat-btn-title {
-                font-size: 1.5rem;
-            }
-
-            .cat-btn-desc {
-                font-size: 0.7rem;
-            }
-
-            .cat-btn-arrow {
-                font-size: 22px;
-            }
-
-            .intro-slogan {
-                font-size: 1.2rem;
-            }
-
-            .michelada-options-card .option-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 0.3rem !important;
-            }
-
-            .michelada-options-card .option-item {
-                font-size: 0.85rem !important;
-                padding: 0.25rem 0.15rem !important;
-            }
-
-            .michelada-options-card .option-item .option-price {
-                font-size: 0.75rem !important;
-            }
-
-            .michelada-options-card .option-item.full-width {
-                grid-column: 1 / -1 !important;
-                flex-direction: row !important;
-                flex-wrap: wrap !important;
-                gap: 0.2rem !important;
-                font-size: 0.85rem !important;
-            }
-
-            .michelada-options-card .option-note {
-                font-size: 0.7rem !important;
-            }
-
-            .fusiones-grid {
-                gap: 0.8rem;
-            }
         }
 
-        @media (max-width: 360px) {
-            .txt-menu {
-                font-size: 3.2rem;
-            }
-
-            .txt-liquid {
-                font-size: 2.4rem;
-            }
-
-            .cat-btn-title {
-                font-size: 1.3rem;
-            }
-
-            .home-slogan-text {
-                font-size: 0.85rem;
-            }
-
-            .product-card .product-name {
-                font-size: 0.8rem;
-            }
-
-            .size-value,
-            .price-value {
-                font-size: 1rem;
-                min-width: 70px;
-                padding: 0.12rem 0.6rem;
-            }
-
-            .col-title {
-                font-size: 1rem;
-            }
-
-            .intro-slogan {
-                font-size: 1rem;
-            }
-
-            .nevado-slogan,
-            .fishbowl-slogan {
-                font-size: 1.1rem;
-            }
-
-            .option-item {
-                font-size: 0.75rem !important;
-            }
-
-            .option-title {
-                font-size: 1rem;
-            }
-
-            .fusiones-title {
-                font-size: 1.2rem;
-            }
-
-            .fusion-item {
-                width: 45%;
-                max-width: 80px;
-            }
-
-            .fusion-item img {
-                max-height: 80px;
-            }
-
-            .fusion-item .sabor {
-                font-size: 0.6rem;
-            }
-        }
-
-        /* ===== FORZAR COLUMNAS MICHELADAS ===== */
+        /* ===== FORZAR COLUMNAS MICHELADAS (PRIORIDAD) ===== */
         .michelada-options-card .option-grid {
             display: grid !important;
             grid-template-columns: repeat(2, 1fr) !important;
@@ -1647,7 +1593,6 @@
             justify-content: center !important;
             gap: 0.08rem !important;
             white-space: normal !important;
-            flex-wrap: wrap !important;
         }
 
         .michelada-options-card .option-note {
@@ -1658,6 +1603,26 @@
             padding-top: 0.15rem !important;
             color: #888 !important;
             font-size: 0.85rem !important;
+        }
+
+        @media (max-width: 430px) {
+            .michelada-options-card .option-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0.3rem !important;
+            }
+
+            .michelada-options-card .option-item {
+                font-size: 0.98rem !important;
+                padding: 0.35rem 0.2rem !important;
+            }
+
+            .michelada-options-card .option-item .option-price {
+                margin-top: 0.12rem !important;
+            }
+
+            .michelada-options-card .option-item.full-width {
+                flex-direction: row !important;
+            }
         }
     </style>
 </head>
@@ -1786,19 +1751,19 @@
                 </div>
 
                 <div class="intro-card">
-                    <p class="intro-slogan">¿CUÁNTA FRESCURA NECESITAS HOY?</p>
+                    <p class="intro-slogan"><span class="invert">¿</span>CUÁNTA FRESCURA NECESITAS HOY?</p>
                 </div>
 
                 <div class="size-price-block">
                     <div class="size-col">
-                        <span class="col-title">¡TAMAÑO!</span>
+                        <span class="col-title"><span class="invert">¡</span>TAMAÑO!</span>
                         <div class="col-values">
                             <span class="size-value">MEDIUM</span>
                             <span class="size-value">LARGE</span>
                         </div>
                     </div>
                     <div class="price-col">
-                        <span class="col-title">¡PRECIO!</span>
+                        <span class="col-title"><span class="invert">¡</span>PRECIO!</span>
                         <div class="col-values">
                             <span class="price-value">20K</span>
                             <span class="price-value">25K</span>
@@ -1850,15 +1815,15 @@
                 </div>
 
                 <div class="nevado-info-card">
-                    <p class="nevado-slogan">¡FRESCURA TROPICAL EN CADA SORBO!</p>
+                    <p class="nevado-slogan"><span class="invert">¡</span>FRESCURA TROPICAL EN CADA SORBO!</p>
                     <p class="nevado-desc">Deléitate con la combinación perfecta de frutas exóticas y la suavidad de nuestros nevados.</p>
                     <div class="nevado-price-row">
                         <div class="price-item">
-                            <span class="size-label">¡TAMAÑO!</span>
+                            <span class="size-label"><span class="invert">¡</span>TAMAÑO!</span>
                             <span class="price-value">MEDIUM</span>
                         </div>
                         <div class="price-item">
-                            <span class="size-label">¡PRECIO!</span>
+                            <span class="size-label"><span class="invert">¡</span>PRECIO!</span>
                             <span class="price-value">20K</span>
                         </div>
                     </div>
@@ -1899,7 +1864,7 @@
 
                 <div class="intro-card">
                     <p class="intro-slogan">16 ONZAS</p>
-                    <p class="intro-slogan" style="font-size:1.2rem; margin-top:0.2rem;">¡ÁRMALA COMO PREFIERAS!</p>
+                    <p class="intro-slogan" style="font-size:1.2rem; margin-top:0.2rem;"><span class="invert">¡</span>ÁRMALA COMO PREFIERAS!</p>
                 </div>
 
                 <div class="michelada-options-card">
@@ -1940,7 +1905,7 @@
                     <div class="option-section">
                         <h3 class="option-title">INCLUYE</h3>
                         <div class="option-grid">
-                            <div class="option-item full-width" style="font-weight:700; color:var(--red-polarix); justify-content:center;">¡Sin costo extra!</div>
+                            <div class="option-item full-width" style="font-weight:700; color:var(--red-polarix); justify-content:center;"><span class="invert">¡</span>Sin costo extra!</div>
                             <div class="option-item full-width" style="justify-content:center;">Bubbles - Trocitos de fruta</div>
                         </div>
                     </div>
@@ -1948,7 +1913,7 @@
 
                 <div class="fusiones-section">
                     <h2 class="fusiones-title">FUSIONES FRUTALES</h2>
-                    <p class="fusiones-subtitle">¡ÁRMALAS CON LA BASE Y EL ESCARCHADO QUE PREFIERAS!</p>
+                    <p class="fusiones-subtitle"><span class="invert">¡</span>ÁRMALAS CON LA BASE Y EL ESCARCHADO QUE PREFIERAS!</p>
                     <p class="fusiones-note">(Opciones en la página anterior)</p>
 
                     <div class="fusiones-grid">
@@ -2033,7 +1998,7 @@
                 </div>
 
                 <div class="fishbowl-container">
-                    <p class="fishbowl-slogan">¡LA MÁS GRANDE. MÁS FRÍA<br />Y MÁS DIVERTIDA!</p>
+                    <p class="fishbowl-slogan"><span class="invert">¡</span>LA MÁS GRANDE. MÁS FRÍA<br />Y MÁS DIVERTIDA!</p>
                     <div class="fishbowl-prices">
                         <div class="price-item">
                             <span class="size-label">MEDIUM</span>
@@ -2159,6 +2124,7 @@
             const target = document.getElementById(viewId);
             target.classList.add('active');
             document.querySelector('.scrollable-content').scrollTop = 0;
+            // Forzar reflow para reiniciar animación
             void target.offsetWidth;
         }
 
@@ -2166,6 +2132,7 @@
             document.querySelectorAll('.menu-section').forEach(section => section.classList.remove('active'));
             document.getElementById('view-home').style.display = 'flex';
             document.querySelector('.scrollable-content').scrollTop = 0;
+            // Forzar reflow para reiniciar animación
             const home = document.getElementById('view-home');
             void home.offsetWidth;
         }
