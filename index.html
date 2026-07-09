@@ -57,7 +57,7 @@
             --font-category: 'Quarantype Hangout', cursive;
             --font-clean: 'Quicksand', sans-serif;
             --font-poppins: 'Poppins', sans-serif;
-            --font-script: 'Marykate', cursive;
+            --font-script: 'Marykate', 'Quarantype Hangout', 'Chewy', 'Quicksand', Arial, sans-serif;
         }
 
         /* ===== RESET ===== */
@@ -644,6 +644,13 @@
             letter-spacing: 1px;
         }
 
+        /* helper class to render inverted punctuation in a robust fallback font */
+        .invert {
+            font-family: var(--font-poppins);
+            display: inline-block;
+            margin-right: 0.05em;
+        }
+
         /* ===== BLOQUE TAMAÑO / PRECIO ===== */
         .size-price-block {
             background: white;
@@ -654,11 +661,11 @@
             box-shadow: var(--shadow-soft);
             position: relative;
             z-index: 1;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            align-items: stretch;
-            gap: 1.5rem;
+            /* use grid for predictable two-column layout */
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 1rem;
             animation: slideUp 0.5s ease 0.4s both;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -674,7 +681,6 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            flex: 1;
             text-align: center;
             min-width: 100px;
         }
@@ -1267,7 +1273,9 @@
         }
 
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 400px) {
+        @media (max-width: 430px) {
+            /* on smaller phones keep the grid but force two columns to keep alignment */
+            .size-price-block { grid-template-columns: 1fr 1fr; }
             .product-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 0.8rem;
@@ -1281,9 +1289,12 @@
                 padding: 0.4rem 0.2rem 0.1rem;
             }
             .size-price-block {
-                flex-direction: column;
-                gap: 1.5rem;
+                /* keep horizontal layout like Nevados on small screens */
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 0.8rem;
                 padding: 1.5rem 1rem;
+                justify-content: space-around;
             }
             .size-col,
             .price-col {
@@ -1556,19 +1567,19 @@
                 </div>
 
                 <div class="intro-card">
-                    <p class="intro-slogan">¿CUÁNTA FRESCURA NECESITAS HOY?</p>
+                    <p class="intro-slogan"><span class="invert">¿</span>CUÁNTA FRESCURA NECESITAS HOY?</p>
                 </div>
 
                 <div class="size-price-block">
                     <div class="size-col">
-                        <span class="col-title">¡TAMAÑO!</span>
+                        <span class="col-title"><span class="invert">¡</span>TAMAÑO!</span>
                         <div class="col-values">
                             <span class="size-value">MEDIUM</span>
                             <span class="size-value">LARGE</span>
                         </div>
                     </div>
                     <div class="price-col">
-                        <span class="col-title">¡PRECIO!</span>
+                        <span class="col-title"><span class="invert">¡</span>PRECIO!</span>
                         <div class="col-values">
                             <span class="price-value">20K</span>
                             <span class="price-value">25K</span>
@@ -1620,15 +1631,15 @@
                 </div>
 
                 <div class="nevado-info-card">
-                    <p class="nevado-slogan">¡FRESCURA TROPICAL EN CADA SORBO!</p>
+                    <p class="nevado-slogan"><span class="invert">¡</span>FRESCURA TROPICAL EN CADA SORBO!</p>
                     <p class="nevado-desc">Deléitate con la combinación perfecta de frutas exóticas y la suavidad de nuestros nevados.</p>
                     <div class="nevado-price-row">
                         <div class="price-item">
-                            <span class="size-label">¡TAMAÑO!</span>
+                            <span class="size-label"><span class="invert">¡</span>TAMAÑO!</span>
                             <span class="price-value">MEDIUM</span>
                         </div>
                         <div class="price-item">
-                            <span class="size-label">¡PRECIO!</span>
+                            <span class="size-label"><span class="invert">¡</span>PRECIO!</span>
                             <span class="price-value">20K</span>
                         </div>
                     </div>
@@ -1669,7 +1680,7 @@
 
                 <div class="intro-card">
                     <p class="intro-slogan">16 ONZAS</p>
-                    <p class="intro-slogan" style="font-size:1.2rem; margin-top:0.2rem;">¡ÁRMALA COMO PREFIERAS!</p>
+                    <p class="intro-slogan" style="font-size:1.2rem; margin-top:0.2rem;"><span class="invert">¡</span>ÁRMALA COMO PREFIERAS!</p>
                 </div>
 
                 <div class="michelada-options-card">
@@ -1710,7 +1721,7 @@
                     <div class="option-section">
                         <h3 class="option-title">INCLUYE</h3>
                         <div class="option-grid">
-                            <div class="option-item full-width" style="font-weight:700; color:var(--red-polarix); justify-content:center;">¡Sin costo extra!</div>
+                            <div class="option-item full-width" style="font-weight:700; color:var(--red-polarix); justify-content:center;"><span class="invert">¡</span>Sin costo extra!</div>
                             <div class="option-item full-width" style="justify-content:center;">Bubbles - Trocitos de fruta</div>
                         </div>
                     </div>
@@ -1718,7 +1729,7 @@
 
                 <div class="fusiones-section">
                     <h2 class="fusiones-title">FUSIONES FRUTALES</h2>
-                    <p class="fusiones-subtitle">¡ÁRMALAS CON LA BASE Y EL ESCARCHADO QUE PREFIERAS!</p>
+                    <p class="fusiones-subtitle"><span class="invert">¡</span>ÁRMALAS CON LA BASE Y EL ESCARCHADO QUE PREFIERAS!</p>
                     <p class="fusiones-note">(Opciones en la página anterior)</p>
 
                     <div class="fusiones-grid">
@@ -1803,7 +1814,7 @@
                 </div>
 
                 <div class="fishbowl-container">
-                    <p class="fishbowl-slogan">¡LA MÁS GRANDE. MÁS FRÍA<br />Y MÁS DIVERTIDA!</p>
+                    <p class="fishbowl-slogan"><span class="invert">¡</span>LA MÁS GRANDE. MÁS FRÍA<br />Y MÁS DIVERTIDA!</p>
                     <div class="fishbowl-prices">
                         <div class="price-item">
                             <span class="size-label">MEDIUM</span>
