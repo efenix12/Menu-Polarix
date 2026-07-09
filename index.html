@@ -53,12 +53,11 @@
             --space-lg: 2rem;
             --space-xl: 3rem;
             
-            /* ===== FUENTES ORIGINALES (NO MODIFICADAS) ===== */
+            /* ===== FUENTES ORIGINALES (CORRECTAS) ===== */
             --font-menu: 'Bunny Hop', Impact, sans-serif;
             --font-product: 'Chewy', cursive;
             --font-category: 'Quarantype Hangout', cursive;
             --font-clean: 'Quicksand', sans-serif;
-            /* SOLO CAMBIAMOS POPPINS → LATO */
             --font-poppins: 'Lato', sans-serif;
             --font-script: 'Marykate', 'Quarantype Hangout', 'Chewy', 'Quicksand', Arial, sans-serif;
         }
@@ -2124,7 +2123,6 @@
             const target = document.getElementById(viewId);
             target.classList.add('active');
             document.querySelector('.scrollable-content').scrollTop = 0;
-            // Forzar reflow para reiniciar animación
             void target.offsetWidth;
         }
 
@@ -2132,7 +2130,6 @@
             document.querySelectorAll('.menu-section').forEach(section => section.classList.remove('active'));
             document.getElementById('view-home').style.display = 'flex';
             document.querySelector('.scrollable-content').scrollTop = 0;
-            // Forzar reflow para reiniciar animación
             const home = document.getElementById('view-home');
             void home.offsetWidth;
         }
