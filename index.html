@@ -545,8 +545,9 @@
                     position: absolute;
                     left: 50%;
                     top: 0;
-                    transform: translate(-50%, -120%);
-                    font-size: 0.9em;
+                    /* lowered a bit and slightly larger for better alignment */
+                    transform: translate(-50%, -95%);
+                    font-size: 1.1em;
                     font-family: Arial, sans-serif;
                     color: inherit;
                     text-shadow: inherit;
@@ -557,7 +558,8 @@
                 }
                 /* mobile tweak: slightly higher and slightly larger */
                 @media (max-width: 430px) {
-                    .menu-u::after { transform: translate(-50%, -140%); font-size: 1.05em; }
+                    /* mobile: slightly larger and lower for better visual on small screens */
+                    .menu-u::after { transform: translate(-50%, -115%); font-size: 1.2em; }
                 }
 
         .txt-liquid {
