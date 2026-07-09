@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Polarix - Menú Digital</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Chewy&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Sniglet:wght@800&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet" />
     <style>
         /* ===== FUENTES PERSONALIZADAS (desde carpeta Fonts/) ===== */
         @font-face {
@@ -22,8 +22,8 @@
         }
 
         @font-face {
-            font-family: 'Lato';
-            src: url('Font/Lato-Regular.ttf') format('truetype');
+            font-family: 'Poppins';
+            src: url('Font/Poppins-Regular.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
@@ -52,13 +52,11 @@
             --space-md: 1.5rem;
             --space-lg: 2rem;
             --space-xl: 3rem;
-            
-            /* ===== FUENTES ORIGINALES ===== */
             --font-menu: 'Bunny Hop', Impact, sans-serif;
             --font-product: 'Chewy', cursive;
             --font-category: 'Quarantype Hangout', cursive;
             --font-clean: 'Quicksand', sans-serif;
-            --font-poppins: 'Lato', sans-serif;
+            --font-poppins: 'Poppins', sans-serif;
             --font-script: 'Marykate', 'Quarantype Hangout', 'Chewy', 'Quicksand', Arial, sans-serif;
         }
 
@@ -534,34 +532,23 @@
             display: inline;
         }
 
-        menu-u {
+        .menu-u {
             position: relative;
-            display: inline-block;
-            padding: 0 0.06em;
-            overflow: visible;
+            display: inline;
         }
 
-        menu-u::after {
-            content: "\0301";
+        .menu-u::after {
+            content: "´";
             position: absolute;
             left: 50%;
-            top: 0;
-            transform: translate(-50%, -60%);
-            font-size: 1.4em;
-            font-family: var(--font-poppins);
-            color: inherit;
+            transform: translateX(-50%);
+            top: -0.45em; /* centered above the U */
+            font-size: 0.95em;
+            font-family: Arial, sans-serif;
+            color: white;
             text-shadow: inherit;
             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
             pointer-events: none;
-            line-height: 1;
-            display: block;
-        }
-
-        @media (max-width: 430px) {
-            menu-u::after {
-                font-size: 1.6em;
-                transform: translate(-50%, -65%);
-            }
         }
 
         .txt-liquid {
@@ -659,7 +646,15 @@
             letter-spacing: 1px;
         }
 
-        /* ===== INVERT ELIMINADA - NO SE USA MÁS ===== */
+        /* helper class to render inverted punctuation in a robust fallback font */
+        .invert {
+            font-family: var(--font-clean) !important;
+            display: inline;
+            vertical-align: baseline;
+            margin-right: 0.03em; /* reduce gap after inverted punctuation */
+            font-size: inherit;
+            line-height: inherit;
+        }
 
         /* ===== BLOQUE TAMAÑO / PRECIO ===== */
         .size-price-block {
@@ -671,6 +666,7 @@
             box-shadow: var(--shadow-soft);
             position: relative;
             z-index: 1;
+            /* use grid for predictable two-column layout */
             display: grid;
             grid-template-columns: 1fr 1fr;
             align-items: center;
@@ -751,7 +747,7 @@
 
         /* ===== INCLUYEN ROW ===== */
         .includes-row {
-            grid-column: 1 / -1;
+            grid-column: 1 / -1; /* span both columns */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -875,7 +871,6 @@
             grid-column: span 2;
             padding-top: 0.1rem;
             letter-spacing: 0.3px;
-            font-family: var(--font-poppins);
         }
 
         /* ===== FUSIONES FRUTALES ===== */
@@ -1318,239 +1313,173 @@
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 430px) {
-            .phone-container {
-                border-radius: 0;
-                height: 100vh;
-                max-height: none;
-                border: none;
-            }
-
-            .size-price-block {
-                grid-template-columns: 1fr 1fr;
-                padding: 1rem 0.8rem;
-                gap: 0.6rem;
-            }
-
+            /* on smaller phones stack into single columns where appropriate and center content */
+            .size-price-block { grid-template-columns: 1fr 1fr; padding: 1rem 0.8rem; gap: 0.6rem; }
             .product-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 0.6rem;
                 padding: 0 0.9rem 0.9rem;
             }
-
             .product-card img {
                 aspect-ratio: 2 / 3;
             }
-
             .product-card .product-name {
                 font-size: 0.98rem;
                 padding: 0.35rem 0.2rem 0.1rem;
             }
-
+            .size-price-block {
+                /* keep grid for predictability */
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.6rem;
+                padding: 1rem 0.8rem;
+            }
             .size-col,
             .price-col {
-                width: auto;
+                width: auto; /* allow grid columns to control sizing */
             }
-
-            .col-title {
-                font-size: 1.2rem;
-            }
-
-            .size-value,
-            .price-value {
-                font-size: 1.2rem;
-                min-width: 90px;
-                padding: 0.18rem 0.9rem;
-            }
-
-            .option-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.35rem 0.35rem;
-            }
-
-            .option-item {
-                flex-direction: column;
-                text-align: center;
-                font-size: 0.98rem;
-                padding: 0.35rem 0.2rem;
-            }
-
-            .option-item .option-price {
-                display: inline-block;
-                margin-top: 0.15rem;
-            }
-
-            .option-title {
-                font-size: 1.25rem;
-            }
-
-            .includes-items {
-                font-size: 0.95rem;
-            }
-
+            .col-title { font-size: 1.2rem; }
+            .size-value, .price-value { font-size: 1.2rem; min-width: 90px; padding: 0.18rem 0.9rem; }
+            /* Option lists: prefer two columns on phones for compact layout */
+            .option-grid { grid-template-columns: repeat(2,1fr); gap: 0.35rem 0.35rem; }
+            .option-item { flex-direction: column; text-align: center; font-size: 0.98rem; padding: 0.35rem 0.2rem; }
+            .option-item .option-price { display: inline-block; margin-top: 0.15rem; }
+            .option-title { font-size: 1.25rem; }
+            .includes-items { font-size: 0.95rem; }
+        }
             .txt-menu {
                 font-size: 4rem;
             }
-
             .txt-liquid {
                 font-size: 3rem;
                 margin-top: 0.8rem;
             }
-
             .size-value,
             .price-value {
                 font-size: 1.8rem;
                 min-width: 110px;
             }
-
-            menu-u::after {
+            .menu-u::after {
                 font-size: 0.8em;
                 top: -0.7em;
                 right: -0.1em;
             }
-
             .modal-content {
                 max-width: 95%;
                 max-height: 95%;
             }
-
             .option-grid {
                 grid-template-columns: 1fr;
             }
-
             .option-item.full-width {
                 grid-column: 1;
             }
-
             .option-note {
                 grid-column: 1;
             }
-
             .michelada-options-card {
                 padding: 1rem 0.8rem;
             }
-
             .fusiones-section {
                 padding: 1rem 0.8rem;
             }
-
             .fusiones-title {
                 font-size: 1.4rem;
             }
-
             .fusion-item {
                 width: 40%;
                 max-width: 100px;
             }
-
             .fusion-item img {
                 max-height: 100px;
             }
-
             .fusion-item .sabor {
                 font-size: 0.7rem;
             }
-
             .nevado-info-card,
             .fishbowl-container {
                 padding: 1.2rem 0.8rem;
             }
-
             .nevado-slogan,
             .fishbowl-slogan {
                 font-size: 1.3rem;
             }
-
             .nevado-price-row .price-value,
             .fishbowl-prices .price-value {
                 font-size: 1.6rem;
             }
-
             .nevado-desc {
                 font-size: 0.8rem;
             }
-
             .fishbowl-image-item {
                 width: 45%;
                 max-width: 140px;
             }
-
             .fishbowl-image-item img {
                 max-height: 140px;
             }
-
             .fishbowl-image-item .image-name {
                 font-size: 0.7rem;
             }
-
             .decor-inner-sparkle {
                 width: 25px;
                 height: 25px;
                 left: 15px;
                 top: 60px;
             }
-
             .decor-inner-burst-top {
                 width: 40px;
                 height: 40px;
                 right: 15px;
                 top: 60px;
             }
-
             .decor-inner-burst-left {
                 width: 40px;
                 height: 40px;
                 left: 10px;
             }
-
             .decor-inner-star-tail {
                 width: 60px;
                 height: 60px;
                 right: 5px;
                 bottom: 10px;
             }
-
             .deco-sparkle-top-left {
                 width: 25px;
                 height: 25px;
                 left: 12px;
                 top: 80px;
             }
-
             .deco-burst-top-right {
                 width: 35px;
                 height: 35px;
                 right: 12px;
                 top: 80px;
             }
-
             .deco-star-tail-bottom-right {
                 width: 60px;
                 height: 60px;
                 right: 10px;
                 bottom: 20px;
             }
-
             .decor-sparkles-top {
                 width: 25px;
                 height: 25px;
                 left: 20px;
                 top: 30px;
             }
-
             .decor-burst-top {
                 width: 40px;
                 height: 40px;
                 right: 15px;
                 top: 45px;
             }
-
             .decor-burst-left {
                 width: 40px;
                 height: 40px;
                 left: 12px;
                 top: 160px;
             }
-
             .decor-star-tail {
                 width: 60px;
                 height: 60px;
@@ -1566,7 +1495,6 @@
             gap: 0.35rem 0.4rem !important;
             align-items: start !important;
         }
-
         .michelada-options-card .option-item {
             text-align: center !important;
             justify-content: center !important;
@@ -1576,17 +1504,15 @@
             flex-direction: column !important;
             gap: 0.25rem !important;
         }
-
         .michelada-options-card .option-item.full-width {
             grid-column: 1 / -1 !important;
             display: flex !important;
             flex-direction: row !important;
             align-items: center !important;
             justify-content: center !important;
-            gap: 0.08rem !important;
+        gap: 0.08rem !important; /* tighten gap so punctuation stays close */
             white-space: normal !important;
         }
-
         .michelada-options-card .option-note {
             grid-column: 1 / -1 !important;
             text-align: center !important;
@@ -1602,19 +1528,12 @@
                 grid-template-columns: repeat(2, 1fr) !important;
                 gap: 0.3rem !important;
             }
-
             .michelada-options-card .option-item {
                 font-size: 0.98rem !important;
                 padding: 0.35rem 0.2rem !important;
             }
-
-            .michelada-options-card .option-item .option-price {
-                margin-top: 0.12rem !important;
-            }
-
-            .michelada-options-card .option-item.full-width {
-                flex-direction: row !important;
-            }
+            .michelada-options-card .option-item .option-price { margin-top: 0.12rem !important; }
+            .michelada-options-card .option-item.full-width { flex-direction: row !important; }
         }
     </style>
 </head>
@@ -1743,19 +1662,19 @@
                 </div>
 
                 <div class="intro-card">
-                    <p class="intro-slogan">¿CUÁNTA FRESCURA NECESITAS HOY?</p>
+                    <p class="intro-slogan"><span class="invert">¿CUÁNTA FRESCURA NECESITAS HOY?</span></p>
                 </div>
 
                 <div class="size-price-block">
                     <div class="size-col">
-                        <span class="col-title">¡TAMAÑO!</span>
+                        <span class="col-title"><span class="invert">¡</span>TAMAÑO<span class="invert">!</span></span>
                         <div class="col-values">
                             <span class="size-value">MEDIUM</span>
                             <span class="size-value">LARGE</span>
                         </div>
                     </div>
                     <div class="price-col">
-                        <span class="col-title">¡PRECIO!</span>
+                        <span class="col-title"><span class="invert">¡</span>PRECIO<span class="invert">!</span></span>
                         <div class="col-values">
                             <span class="price-value">20K</span>
                             <span class="price-value">25K</span>
@@ -1770,60 +1689,60 @@
                 <div class="product-grid" id="granizados-grid"></div>
             </div>
 
-                  <!-- ================= NEVADOS ================= -->
+            <!-- ================= NEVADOS ================= -->
             <div id="view-nevados" class="menu-section">
                 <!-- Adornos decorativos -->
                 <svg class="decor-inner decor-inner-sparkle" viewBox="0 0 30 30" fill="none" stroke="var(--yellow-polarix)" stroke-width="1.5">
                     <path d="M7 3L9.5 8L15 9.5L9.5 11L7 16L4.5 11L-1 9.5L4.5 8Z" fill="var(--yellow-polarix)"/>
                     <path d="M20 14L21.5 17.5L25 18L21.5 18.5L20 22L18.5 18.5L15 18L18.5 17.5Z" fill="var(--yellow-polarix)"/>
                 </svg>
-            
+
                 <svg class="decor-inner decor-inner-burst-top" viewBox="0 0 80 80">
                     <line x1="15" y1="65" x2="35" y2="35" stroke="var(--yellow-polarix)" stroke-width="3" stroke-linecap="round" />
                     <line x1="38" y1="68" x2="55" y2="25" stroke="var(--yellow-polarix)" stroke-width="3" stroke-linecap="round" />
                     <line x1="60" y1="65" x2="75" y2="30" stroke="var(--yellow-polarix)" stroke-width="3" stroke-linecap="round" />
                 </svg>
-            
+
                 <svg class="decor-inner decor-inner-burst-left" viewBox="0 0 70 70">
                     <line x1="50" y1="15" x2="25" y2="35" stroke="var(--yellow-polarix)" stroke-width="2.5" stroke-linecap="round" />
                     <line x1="55" y1="35" x2="25" y2="55" stroke="var(--yellow-polarix)" stroke-width="2.5" stroke-linecap="round" />
                     <line x1="45" y1="55" x2="30" y2="70" stroke="var(--yellow-polarix)" stroke-width="2.5" stroke-linecap="round" />
                 </svg>
-            
+
                 <svg class="decor-inner decor-inner-star-tail" viewBox="0 0 100 120">
                     <path d="M10,110 Q50,90 60,50" fill="none" stroke="var(--yellow-polarix)" stroke-width="2.5" stroke-linecap="round"/>
                     <polygon points="60,25 64,37 76,37 66,45 70,57 60,49 50,57 54,45 44,37 56,37" fill="var(--yellow-polarix)" stroke="var(--yellow-polarix)" stroke-width="1"/>
                 </svg>
-            
+
                 <section class="wave-header">
                     <span class="txt-menu">
                         <span class="menu-text">MEN</span><span class="menu-u">U</span>
                     </span>
                     <span class="txt-liquid">Nevados</span>
                 </section>
-            
+
                 <div class="nav-back-container">
                     <button class="btn-back-pill" onclick="goHome()">← Volver</button>
                 </div>
-            
+
                 <div class="nevado-info-card">
-                    <!-- ===== TEXTO CON LATO (SIN SPANS ANIDADOS) ===== -->
-                    <p class="nevado-slogan lato-text">¡FRESCURA TROPICAL EN CADA SORBO!</p>
+                    <p class="nevado-slogan"><span class="invert">¡</span>FRESCURA TROPICAL EN CADA SORBO<span class="invert">!</span></p>
                     <p class="nevado-desc">Deléitate con la combinación perfecta de frutas exóticas y la suavidad de nuestros nevados.</p>
                     <div class="nevado-price-row">
                         <div class="price-item">
-                            <span class="size-label lato-text">¡TAMAÑO!</span>
-                            <span class="price-value lato-text">MEDIUM</span>
+                            <span class="size-label"><span class="invert">¡</span>TAMAÑO<span class="invert">!</span></span>
+                            <span class="price-value">MEDIUM</span>
                         </div>
                         <div class="price-item">
-                            <span class="size-label lato-text">¡PRECIO!</span>
-                            <span class="price-value lato-text">20K</span>
+                            <span class="size-label"><span class="invert">¡</span>PRECIO<span class="invert">!</span></span>
+                            <span class="price-value">20K</span>
                         </div>
                     </div>
                 </div>
-            
+
                 <div class="product-grid" id="nevados-grid"></div>
             </div>
+
             <!-- ================= MICHELADAS ================= -->
             <div id="view-micheladas" class="menu-section">
                 <!-- Adornos originales -->
@@ -1856,7 +1775,7 @@
 
                 <div class="intro-card">
                     <p class="intro-slogan">16 ONZAS</p>
-                    <p class="intro-slogan" style="font-size:1.2rem; margin-top:0.2rem;">¡ÁRMALA COMO PREFIERAS!</p>
+                    <p class="intro-slogan" style="font-size:1.2rem; margin-top:0.2rem;"><span class="invert">¡</span>ÁRMALA COMO PREFIERAS<span class="invert">!</span></p>
                 </div>
 
                 <div class="michelada-options-card">
@@ -1897,7 +1816,7 @@
                     <div class="option-section">
                         <h3 class="option-title">INCLUYE</h3>
                         <div class="option-grid">
-                            <div class="option-item full-width" style="font-weight:700; color:var(--red-polarix); justify-content:center;">¡Sin costo extra!</div>
+                            <div class="option-item full-width" style="font-weight:700; color:var(--red-polarix); justify-content:center;"><span class="invert">¡</span>Sin costo extra<span class="invert">!</span></div>
                             <div class="option-item full-width" style="justify-content:center;">Bubbles - Trocitos de fruta</div>
                         </div>
                     </div>
@@ -1905,7 +1824,7 @@
 
                 <div class="fusiones-section">
                     <h2 class="fusiones-title">FUSIONES FRUTALES</h2>
-                    <p class="fusiones-subtitle">¡ÁRMALAS CON LA BASE Y EL ESCARCHADO QUE PREFIERAS!</p>
+                    <p class="fusiones-subtitle"><span class="invert">¡</span>ÁRMALAS CON LA BASE Y EL ESCARCHADO QUE PREFIERAS<span class="invert">!</span></p>
                     <p class="fusiones-note">(Opciones en la página anterior)</p>
 
                     <div class="fusiones-grid">
@@ -1990,7 +1909,7 @@
                 </div>
 
                 <div class="fishbowl-container">
-                    <p class="fishbowl-slogan">¡LA MÁS GRANDE. MÁS FRÍA<br />Y MÁS DIVERTIDA!</p>
+                    <p class="fishbowl-slogan"><span class="invert">¡LA MÁS GRANDE. MÁS FRÍA<br />Y MÁS DIVERTIDA!</span></p>
                     <div class="fishbowl-prices">
                         <div class="price-item">
                             <span class="size-label">MEDIUM</span>
@@ -2116,6 +2035,7 @@
             const target = document.getElementById(viewId);
             target.classList.add('active');
             document.querySelector('.scrollable-content').scrollTop = 0;
+            // Forzar reflow para reiniciar animación
             void target.offsetWidth;
         }
 
@@ -2123,9 +2043,18 @@
             document.querySelectorAll('.menu-section').forEach(section => section.classList.remove('active'));
             document.getElementById('view-home').style.display = 'flex';
             document.querySelector('.scrollable-content').scrollTop = 0;
+            // Forzar reflow para reiniciar animación
             const home = document.getElementById('view-home');
             void home.offsetWidth;
         }
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
