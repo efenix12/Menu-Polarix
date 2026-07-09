@@ -532,35 +532,36 @@
             display: inline;
         }
 
-        .menu-u {
+        menu-u {
             position: relative;
-                    display: inline-block; /* allow precise centering */
-                    padding: 0 0.06em; /* tiny padding so accent has room */
-                    overflow: visible;
-                }
- 
-                .menu-u::after {
-                    /* use escaped unicode for acute accent and inherit text color so it is visible on any background */
-                    content: "\00B4";
-                    position: absolute;
-                    left: 50%;
-                    top: 0;
-                    /* lowered a bit and slightly larger for better alignment */
-                    transform: translate(-50%, -70%);
-                    font-size: 1.6em;
-                    font-family: Arial, sans-serif;
-                    color: inherit;
-                    text-shadow: inherit;
-                    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
-                    pointer-events: none;
-                    line-height: 1;
-                    display: block;
-                }
-                /* mobile tweak: slightly higher and slightly larger */
-                @media (max-width: 430px) {
-                    /* mobile: slightly larger and lower for better visual on small screens */
-                    .menu-u::after { transform: translate(-40%, 50%); font-size: 32em; }
-                }    
+            display: inline-block; /* permite centrado preciso */
+            padding: 0 0.06em;    /* pequeño padding para que el acento tenga espacio */
+            overflow: visible;
+        }
+
+        menu-u::after {
+          content: "\0301"; /* acento agudo (mejor que \0084) */
+          position: absolute;
+          left: 50%;
+          top: 0;
+          transform: translate(-50%, -60%); /* centrado y elevado */
+          font-size: 1.2em;   /* tamaño proporcional a la U */
+          font-family: Arial, sans-serif;
+          color: inherit;
+          text-shadow: inherit;
+          filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+          pointer-events: none;
+          line-height: 1;
+          display: block;
+        }
+
+/* Ajuste para móviles: un poco más alto y más grande, pero sin exagerar */
+            @media (max-width: 430px) {
+              menu-u::after {
+                font-size: 1.4em;    /* ligeramente más grande en móvil */
+                transform: translate(-50%, -65%); /* un poco más elevado */
+              }
+            }    
 
         .txt-liquid {
             font-family: var(--font-category);
