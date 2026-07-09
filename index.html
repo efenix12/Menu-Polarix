@@ -53,7 +53,7 @@
             --space-lg: 2rem;
             --space-xl: 3rem;
             
-            /* ===== FUENTES ORIGINALES (CORRECTAS) ===== */
+            /* ===== FUENTES ORIGINALES ===== */
             --font-menu: 'Bunny Hop', Impact, sans-serif;
             --font-product: 'Chewy', cursive;
             --font-category: 'Quarantype Hangout', cursive;
@@ -659,9 +659,9 @@
             letter-spacing: 1px;
         }
 
-        /* helper class to render inverted punctuation in a robust fallback font */
+        /* ===== INVERT: AHORA HEREDA LA FUENTE DEL PADRE ===== */
         .invert {
-            font-family: var(--font-poppins) !important;
+            font-family: inherit !important;
             display: inline;
             vertical-align: baseline;
             margin-right: 0.03em;
