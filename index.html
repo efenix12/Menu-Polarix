@@ -540,13 +540,15 @@
         .menu-u::after {
             content: "´";
             position: absolute;
-            top: -0.3em;
-            right: 0.1em;
-            font-size: 0.9em;
+            left: 50%;
+            transform: translateX(-50%);
+            top: -0.45em; /* centered above the U */
+            font-size: 0.95em;
             font-family: Arial, sans-serif;
             color: white;
             text-shadow: inherit;
             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+            pointer-events: none;
         }
 
         .txt-liquid {
@@ -649,7 +651,7 @@
             font-family: var(--font-poppins) !important;
             display: inline;
             vertical-align: baseline;
-            margin-right: 0.12em;
+            margin-right: 0.03em; /* reduce gap after inverted punctuation */
             font-size: inherit;
             line-height: inherit;
         }
@@ -1508,7 +1510,7 @@
             flex-direction: row !important;
             align-items: center !important;
             justify-content: center !important;
-            gap: 0.35rem !important;
+        gap: 0.08rem !important; /* tighten gap so punctuation stays close */
             white-space: normal !important;
         }
         .michelada-options-card .option-note {
