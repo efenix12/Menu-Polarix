@@ -658,6 +658,22 @@
             text-align: center;
         }
 
+        /* enforce script headline consistency across categories */
+        .nevado-slogan,
+        .hero-slogan,
+        .intro-card .nevado-slogan,
+        .fishbowl-container .hero-slogan {
+            font-family: var(--font-script) !important;
+            color: var(--red-polarix) !important;
+            font-size: 1.6rem !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            font-weight: normal !important;
+            line-height: 1.2 !important;
+            margin-bottom: 0.3rem !important;
+            text-align: center !important;
+        }
+
         /* helper class to render inverted punctuation in a robust fallback font */
         .invert {
             font-family: var(--font-clean) !important;
