@@ -781,11 +781,10 @@
             z-index: 1;
             animation: slideUp 0.5s ease 0.3s both;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            /* ===== FORZADO A 2 COLUMNAS (WEB Y MÓVIL) ===== */
-            display: grid !important;
-            grid-template-columns: 1fr 1fr !important;
-            gap: 1.5rem 2rem !important;
-            align-items: start !important;
+            /* ===== UNA SOLA COLUMNA PARA LAS CATEGORÍAS PRINCIPALES ===== */
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
         }
 
         .michelada-options-card:hover {
@@ -795,7 +794,7 @@
 
         .option-section {
             margin: 0;
-            padding: 0.25rem 0;
+            padding: 0;
             text-align: center;
             width: 100%;
         }
@@ -811,7 +810,7 @@
             font-weight: normal;
         }
 
-        /* Grid de opciones internas: SIEMPRE 2 COLUMNAS */
+        /* ===== SUB-CATEGORÍAS (ítems internos) EN DOS COLUMNAS ===== */
         .option-grid {
             display: grid !important;
             grid-template-columns: repeat(2, 1fr) !important;
@@ -1342,7 +1341,7 @@
 
             .michelada-options-card {
                 padding: 1rem 0.8rem;
-                gap: 0.8rem 1rem !important; /* Reducimos el gap en móvil */
+                gap: 1.2rem;
             }
             .fusiones-section {
                 padding: 1rem 0.8rem;
@@ -1399,7 +1398,6 @@
                 padding: 0.35rem 0.2rem 0.1rem;
             }
 
-            /* Ajustes de adornos */
             .decor-inner-sparkle {
                 width: 25px;
                 height: 25px;
@@ -1466,7 +1464,6 @@
                 bottom: 10px;
             }
 
-            /* Ajustes finos en móvil */
             .michelada-options-card .option-grid {
                 gap: 0.3rem !important;
             }
@@ -1680,7 +1677,7 @@
                 <div class="product-grid" id="nevados-grid"></div>
             </div>
 
-            <!-- ================= MICHELADAS (2 COLUMNAS) ================= -->
+            <!-- ================= MICHELADAS (1 COLUMNA PRINCIPAL / 2 COLUMNAS INTERNAS) ================= -->
             <div id="view-micheladas" class="menu-section">
                 <svg class="deco-sparkle deco-sparkle-top-left" viewBox="0 0 30 30" fill="none" stroke="var(--yellow-polarix)" stroke-width="1.5">
                     <path d="M7 3L9.5 8L15 9.5L9.5 11L7 16L4.5 11L-1 9.5L4.5 8Z" fill="var(--yellow-polarix)"/>
@@ -1710,9 +1707,9 @@
                     <p class="hero-slogan"><span class="invert">¡</span>ÁRMALA COMO PREFIERAS<span class="invert">!</span></p>
                 </div>
 
-                <!-- TARJETA PRINCIPAL: SIEMPRE 2 COLUMNAS (Base | Sabor) / (Escarchados | Incluye) -->
+                <!-- TARJETA PRINCIPAL: CATEGORÍAS APILADAS (1 COLUMNA) -->
                 <div class="michelada-options-card">
-                    <!-- Columna 1: Base -->
+                    <!-- Sección 1: Base -->
                     <div class="option-section">
                         <h3 class="option-title">ELIGE TU BASE</h3>
                         <div class="option-grid">
@@ -1724,7 +1721,7 @@
                         </div>
                     </div>
 
-                    <!-- Columna 2: Sabor -->
+                    <!-- Sección 2: Sabor -->
                     <div class="option-section">
                         <h3 class="option-title">ELIGE TU SABOR</h3>
                         <div class="option-grid">
@@ -1738,7 +1735,7 @@
                         </div>
                     </div>
 
-                    <!-- Columna 3: Escarchados (queda debajo de Base) -->
+                    <!-- Sección 3: Escarchados -->
                     <div class="option-section">
                         <h3 class="option-title">ESCARCHADOS</h3>
                         <div class="option-grid">
@@ -1749,7 +1746,7 @@
                         </div>
                     </div>
 
-                    <!-- Columna 4: Incluye (queda debajo de Sabor) -->
+                    <!-- Sección 4: Incluye -->
                     <div class="option-section">
                         <h3 class="option-title">INCLUYE</h3>
                         <div class="option-grid">
