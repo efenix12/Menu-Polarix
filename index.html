@@ -542,7 +542,7 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            top: -0.45em; /* centered above the U */
+            top: -0.45em;
             font-size: 0.95em;
             font-family: Arial, sans-serif;
             color: white;
@@ -658,12 +658,11 @@
             text-align: center;
         }
 
-        /* helper class to render inverted punctuation in a robust fallback font */
         .invert {
             font-family: var(--font-clean) !important;
             display: inline;
             vertical-align: baseline;
-            margin-right: 0.03em; /* reduce gap after inverted punctuation */
+            margin-right: 0.03em;
             font-size: inherit;
             line-height: inherit;
         }
@@ -678,7 +677,6 @@
             box-shadow: var(--shadow-soft);
             position: relative;
             z-index: 1;
-            /* use grid for predictable two-column layout */
             display: grid;
             grid-template-columns: 1fr 1fr;
             align-items: center;
@@ -757,9 +755,8 @@
             box-shadow: 0 8px 20px rgba(214, 13, 26, 0.2);
         }
 
-        /* ===== INCLUYEN ROW ===== */
         .includes-row {
-            grid-column: 1 / -1; /* span both columns */
+            grid-column: 1 / -1;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -797,66 +794,45 @@
             z-index: 1;
             animation: slideUp 0.5s ease 0.3s both;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0.8rem;
+            /* Siempre una columna para las secciones (BASE, SABOR, etc.) */
+            display: block;
         }
-        
-        .michelada-options-card .option-section:nth-child(2),
-        .michelada-options-card .option-section:nth-child(3) {
-            display: grid;
-            grid-column: span 1;
+
+        .michelada-options-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-card);
         }
-        
-            @media (max-width: 430px) {
-        /* Ajustes de tamaño y espaciado, sin cambios de estructura */
-        .txt-menu { font-size: 4rem; }
-        .txt-liquid { font-size: 3rem; margin-top: 0.8rem; }
-        .size-value, .price-value { font-size: 1.8rem; min-width: 110px; }
-        .menu-u::after { font-size: 0.8em; top: -0.7em; right: -0.1em; }
-        .modal-content { max-width: 95%; max-height: 95%; }
-    
-        /* Mantener una sola columna en Micheladas (ya es 1fr por defecto) */
-        .michelada-options-card { padding: 1rem 0.8rem; }
-        .fusiones-section { padding: 1rem 0.8rem; }
-        .fusiones-title { font-size: 1.4rem; }
-        /* Ancho fijo al 30% para que siempre sean 3 por fila */
-        .fusion-item { width: 30%; max-width: 100px; }
-        .fusion-item img { max-height: 100px; }
-        .fusion-item .sabor { font-size: 0.7rem; }
-    
-        .nevado-info-card,
-        .fishbowl-container { padding: 1.2rem 0.8rem; }
-        .nevado-slogan,
-        .fishbowl-slogan { font-size: 1.3rem; }
-        .nevado-price-row .price-value,
-        .fishbowl-prices .price-value { font-size: 1.6rem; }
-        .nevado-desc { font-size: 0.8rem; }
-    
-        .fishbowl-image-item { width: 45%; max-width: 140px; }
-        .fishbowl-image-item img { max-height: 140px; }
-        .fishbowl-image-item .image-name { font-size: 0.7rem; }
-    
-        /* Ajustes de adornos (solo posición/tamaño, no afectan la estructura) */
-        .decor-inner-sparkle { width: 25px; height: 25px; left: 15px; top: 60px; }
-        .decor-inner-burst-top { width: 40px; height: 40px; right: 15px; top: 60px; }
-        .decor-inner-burst-left { width: 40px; height: 40px; left: 10px; }
-        .decor-inner-star-tail { width: 60px; height: 60px; right: 5px; bottom: 10px; }
-        .deco-sparkle-top-left { width: 25px; height: 25px; left: 12px; top: 80px; }
-        .deco-burst-top-right { width: 35px; height: 35px; right: 12px; top: 80px; }
-        .deco-star-tail-bottom-right { width: 60px; height: 60px; right: 10px; bottom: 20px; }
-        .decor-sparkles-top { width: 25px; height: 25px; left: 20px; top: 30px; }
-        .decor-burst-top { width: 40px; height: 40px; right: 15px; top: 45px; }
-        .decor-burst-left { width: 40px; height: 40px; left: 12px; top: 160px; }
-        .decor-star-tail { width: 60px; height: 60px; right: 5px; bottom: 10px; }
-    
-        /* Ajustes para opciones de Micheladas (sin cambiar columnas) */
-        .michelada-options-card .option-grid { gap: 0.3rem !important; }
-        .michelada-options-card .option-item { font-size: 0.98rem !important; padding: 0.35rem 0.2rem !important; }
-        .michelada-options-card .option-item .option-price { margin-top: 0.12rem !important; }
-        .michelada-options-card .option-item.full-width { flex-direction: row !important; }
-        .option-grid { grid-template-columns: repeat(2, 1fr); } /* ya era así, lo dejo */
-    }
+
+        .option-section {
+            margin-bottom: 1.5rem;
+            padding: 0.25rem 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .option-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .option-title {
+            font-family: var(--font-script);
+            font-size: 1.35rem;
+            color: var(--red-polarix);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 0.6rem;
+            text-align: center;
+            font-weight: normal;
+        }
+
+        /* Grid de opciones internas: SIEMPRE 2 COLUMNAS */
+        .option-grid {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 0.4rem 0.6rem;
+            align-items: start;
+        }
+
         .option-item {
             font-family: var(--font-poppins);
             font-size: 0.98rem;
@@ -896,19 +872,25 @@
         }
 
         .option-item.full-width {
-            grid-column: span 2;
+            grid-column: 1 / -1 !important;
             text-align: center;
             justify-content: center;
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center;
+            gap: 0.08rem;
+            white-space: normal;
         }
 
         .option-note {
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             color: #888;
             font-weight: 400;
             text-align: center;
-            grid-column: span 2;
+            grid-column: 1 / -1 !important;
             padding-top: 0.1rem;
             letter-spacing: 0.3px;
+            justify-self: center;
         }
 
         /* ===== FUSIONES FRUTALES ===== */
@@ -960,20 +942,20 @@
             margin-bottom: 1rem;
         }
 
+        /* Grid de Fusiones: SIEMPRE 3 COLUMNAS para simetría perfecta */
         .fusiones-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 1rem 0.8rem;
+            justify-items: center;
         }
 
         .fusion-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 30%;
-            max-width: 120px;
-            flex: 0 0 auto;
+            width: 100%;
+            max-width: 100%;
             transition: transform 0.3s ease;
             cursor: default;
         }
@@ -1349,42 +1331,8 @@
             color: var(--red-polarix);
         }
 
-        /* ===== RESPONSIVE ===== */
+        /* ===== RESPONSIVE (SOLO AJUSTES DE TAMAÑO Y ESPACIADO) ===== */
         @media (max-width: 430px) {
-            /* on smaller phones stack into single columns where appropriate and center content */
-            .size-price-block { grid-template-columns: 1fr 1fr; padding: 1rem 0.8rem; gap: 0.6rem; }
-            .product-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 0.6rem;
-                padding: 0 0.9rem 0.9rem;
-            }
-            .product-card img {
-                aspect-ratio: 2 / 3;
-            }
-            .product-card .product-name {
-                font-size: 0.98rem;
-                padding: 0.35rem 0.2rem 0.1rem;
-            }
-            .size-price-block {
-                /* keep grid for predictability */
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 0.6rem;
-                padding: 1rem 0.8rem;
-            }
-            .size-col,
-            .price-col {
-                width: auto; /* allow grid columns to control sizing */
-            }
-            .col-title { font-size: 1.2rem; }
-            .size-value, .price-value { font-size: 1.2rem; min-width: 90px; padding: 0.18rem 0.9rem; }
-            /* Option lists: prefer two columns on phones for compact layout */
-            .option-grid { grid-template-columns: repeat(2,1fr); gap: 0.35rem 0.35rem; }
-            .option-item { flex-direction: column; text-align: center; font-size: 0.98rem; padding: 0.35rem 0.2rem; }
-            .option-item .option-price { display: inline-block; margin-top: 0.15rem; }
-            .option-title { font-size: 1.25rem; }
-            .includes-items { font-size: 0.95rem; }
-        }
             .txt-menu {
                 font-size: 4rem;
             }
@@ -1392,8 +1340,7 @@
                 font-size: 3rem;
                 margin-top: 0.8rem;
             }
-            .size-value,
-            .price-value {
+            .size-value, .price-value {
                 font-size: 1.8rem;
                 min-width: 110px;
             }
@@ -1406,15 +1353,8 @@
                 max-width: 95%;
                 max-height: 95%;
             }
-            .option-grid {
-                grid-template-columns: 1fr;
-            }
-            .option-item.full-width {
-                grid-column: 1;
-            }
-            .option-note {
-                grid-column: 1;
-            }
+
+            /* Ajustes de padding y márgenes */
             .michelada-options-card {
                 padding: 1rem 0.8rem;
             }
@@ -1424,9 +1364,8 @@
             .fusiones-title {
                 font-size: 1.4rem;
             }
-            .fusion-item {
-                width: 40%;
-                max-width: 100px;
+            .fusiones-grid {
+                gap: 0.8rem 0.5rem;
             }
             .fusion-item img {
                 max-height: 100px;
@@ -1434,6 +1373,7 @@
             .fusion-item .sabor {
                 font-size: 0.7rem;
             }
+
             .nevado-info-card,
             .fishbowl-container {
                 padding: 1.2rem 0.8rem;
@@ -1449,6 +1389,7 @@
             .nevado-desc {
                 font-size: 0.8rem;
             }
+
             .fishbowl-image-item {
                 width: 45%;
                 max-width: 140px;
@@ -1459,6 +1400,20 @@
             .fishbowl-image-item .image-name {
                 font-size: 0.7rem;
             }
+
+            .product-grid {
+                gap: 0.6rem;
+                padding: 0 0.9rem 0.9rem;
+            }
+            .product-card img {
+                aspect-ratio: 2 / 3;
+            }
+            .product-card .product-name {
+                font-size: 0.98rem;
+                padding: 0.35rem 0.2rem 0.1rem;
+            }
+
+            /* Ajustes de adornos (solo posición/tamaño) */
             .decor-inner-sparkle {
                 width: 25px;
                 height: 25px;
@@ -1524,54 +1479,24 @@
                 right: 5px;
                 bottom: 10px;
             }
-        }
 
-        /* ===== FORZAR COLUMNAS MICHELADAS (PRIORIDAD) ===== */
-        .michelada-options-card .option-grid {
-            display: grid !important;
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 0.35rem 0.4rem !important;
-            align-items: start !important;
-        }
-        .michelada-options-card .option-item {
-            text-align: center !important;
-            justify-content: center !important;
-            align-items: center !important;
-            padding: 0.35rem 0.3rem !important;
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 0.25rem !important;
-        }
-        .michelada-options-card .option-item.full-width {
-            grid-column: 1 / -1 !important;
-            display: flex !important;
-            flex-direction: row !important;
-            align-items: center !important;
-            justify-content: center !important;
-        gap: 0.08rem !important; /* tighten gap so punctuation stays close */
-            white-space: normal !important;
-        }
-        .michelada-options-card .option-note {
-            grid-column: 1 / -1 !important;
-            text-align: center !important;
-            justify-self: center !important;
-            width: 100% !important;
-            padding-top: 0.15rem !important;
-            color: #888 !important;
-            font-size: 0.85rem !important;
-        }
-
-        @media (max-width: 430px) {
+            /* Ajustes finos para Micheladas en móvil */
             .michelada-options-card .option-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
                 gap: 0.3rem !important;
             }
             .michelada-options-card .option-item {
                 font-size: 0.98rem !important;
                 padding: 0.35rem 0.2rem !important;
             }
-            .michelada-options-card .option-item .option-price { margin-top: 0.12rem !important; }
-            .michelada-options-card .option-item.full-width { flex-direction: row !important; }
+            .michelada-options-card .option-item .option-price {
+                margin-top: 0.12rem !important;
+            }
+            .michelada-options-card .option-item.full-width {
+                flex-direction: row !important;
+            }
+            .option-note {
+                font-size: 0.7rem;
+            }
         }
     </style>
 </head>
@@ -1847,7 +1772,7 @@
                             <div class="option-item">Tajín</div>
                             <div class="option-item">Sal Limón</div>
                             <div class="option-item">Pimienta Sal</div>
-                            <div class="option-item full-width" style="justify-content:center;">Azúcar de sabor: (Sandía, cereza, blueberry)</div>
+                            <div class="option-item full-width">Azúcar de sabor: (Sandía, cereza, blueberry)</div>
                         </div>
                     </div>
 
@@ -2073,7 +1998,6 @@
             const target = document.getElementById(viewId);
             target.classList.add('active');
             document.querySelector('.scrollable-content').scrollTop = 0;
-            // Forzar reflow para reiniciar animación
             void target.offsetWidth;
         }
 
@@ -2081,21 +2005,9 @@
             document.querySelectorAll('.menu-section').forEach(section => section.classList.remove('active'));
             document.getElementById('view-home').style.display = 'flex';
             document.querySelector('.scrollable-content').scrollTop = 0;
-            // Forzar reflow para reiniciar animación
             const home = document.getElementById('view-home');
             void home.offsetWidth;
         }
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
