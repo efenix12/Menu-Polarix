@@ -536,10 +536,12 @@
 
         .menu-u::after {
             content: "´";
-            position: absolute;
-            left: 50%;
-            top: 0.5;
-            transform: translate(-50%, 0.5em) !important;
+            position: relative;   /* ← cambiamos a relative */
+            display: inline-block; /* ← para que admita margin */
+            left: 0;
+            top: 0;
+            transform: none;
+            margin-top: -30px;     /* ← mueve hacia arriba */
             font-size: 0.95em;
             font-family: Arial, sans-serif;
             color: white;
