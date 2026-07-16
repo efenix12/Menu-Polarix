@@ -867,6 +867,7 @@
             white-space: normal;
         }
 
+        /* ===== ESTILO UNIFICADO PARA NOTAS (como el texto original) ===== */
         .option-note {
             font-size: 0.75rem;
             color: #888;
@@ -878,13 +879,13 @@
             justify-self: center;
         }
 
-        /* ===== FUSIONES FRUTALES ===== */
+        /* ===== FUSIONES FRUTALES - TARJETA INDEPENDIENTE ===== */
         .fusiones-section {
             background: white;
             border: 3px solid var(--yellow-polarix);
             border-radius: 20px;
             padding: 1.5rem 1.2rem;
-            margin: 0 1.5rem 1.5rem;
+            margin: 2rem 1.5rem 1.5rem; /* Separación superior de la tarjeta anterior */
             box-shadow: var(--shadow-soft);
             position: relative;
             z-index: 1;
@@ -927,14 +928,14 @@
             margin-bottom: 1rem;
         }
 
-        /* Grid de Fusiones: SIEMPRE 3 COLUMNAS */
-                .fusiones-grid {
+        /* ===== DISPOSICIÓN 3-2 CENTRADA CON FLEX ===== */
+        .fusiones-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 1rem 0.8rem;
         }
-        
+
         .fusion-item {
             display: flex;
             flex-direction: column;
@@ -1345,12 +1346,17 @@
             }
             .fusiones-section {
                 padding: 1rem 0.8rem;
+                margin: 1.5rem 1rem 1rem;
             }
             .fusiones-title {
                 font-size: 1.4rem;
             }
             .fusiones-grid {
                 gap: 0.8rem 0.5rem;
+            }
+            .fusion-item {
+                flex: 0 0 calc(50% - 0.5rem);
+                max-width: calc(50% - 0.5rem);
             }
             .fusion-item img {
                 max-height: 100px;
@@ -1480,7 +1486,7 @@
                 font-size: 0.9rem !important;
             }
             .option-note {
-                font-size: 0.65rem;
+                font-size: 0.65rem !important;
             }
             .option-title {
                 font-size: 1.1rem;
@@ -1677,7 +1683,7 @@
                 <div class="product-grid" id="nevados-grid"></div>
             </div>
 
-            <!-- ================= MICHELADAS (1 COLUMNA PRINCIPAL / 2 COLUMNAS INTERNAS) ================= -->
+            <!-- ================= MICHELADAS ================= -->
             <div id="view-micheladas" class="menu-section">
                 <svg class="deco-sparkle deco-sparkle-top-left" viewBox="0 0 30 30" fill="none" stroke="var(--yellow-polarix)" stroke-width="1.5">
                     <path d="M7 3L9.5 8L15 9.5L9.5 11L7 16L4.5 11L-1 9.5L4.5 8Z" fill="var(--yellow-polarix)"/>
@@ -1707,7 +1713,7 @@
                     <p class="hero-slogan"><span class="invert">¡</span>ÁRMALA COMO PREFIERAS<span class="invert">!</span></p>
                 </div>
 
-                <!-- TARJETA PRINCIPAL: CATEGORÍAS APILADAS (1 COLUMNA) -->
+                <!-- TARJETA DE OPCIONES (CATEGORÍAS PRINCIPALES APILADAS) -->
                 <div class="michelada-options-card">
                     <!-- Sección 1: Base -->
                     <div class="option-section">
@@ -1735,17 +1741,18 @@
                         </div>
                     </div>
 
-                    <!-- Sección 3: Escarchados -->
-                    <div class="option-section" style="margin-bottom: 0.2rem;">
+                    <!-- Sección 3: Escarchados (con margen inferior para separar de Incluye) -->
+                    <div class="option-section" style="margin-bottom: 2rem;">
                         <h3 class="option-title">ESCARCHADOS</h3>
                         <div class="option-grid">
                             <div class="option-item">Tajín</div>
                             <div class="option-item">Sal Limón</div>
                             <div class="option-item">Pimienta Sal</div>
+                            <!-- Ahora usa la misma clase que la nota de original -->
                             <div class="option-note">Azúcar de sabor: (Sandía, cereza, blueberry)</div>
                         </div>
                     </div>
-                    
+
                     <!-- Sección 4: Incluye -->
                     <div class="option-section">
                         <h3 class="option-title">INCLUYE</h3>
@@ -1754,7 +1761,9 @@
                             <div class="option-item full-width" style="justify-content:center;">Bubbles - Trocitos de fruta</div>
                         </div>
                     </div>
+                </div>
 
+                <!-- ===== TARJETA INDEPENDIENTE DE FUSIONES FRUTALES ===== -->
                 <div class="fusiones-section">
                     <h2 class="fusiones-title">FUSIONES FRUTALES</h2>
                     <p class="fusiones-subtitle"><span class="invert">¡</span>ÁRMALAS CON LA BASE Y EL ESCARCHADO QUE PREFIERAS<span class="invert">!</span></p>
