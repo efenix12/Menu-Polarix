@@ -808,56 +808,55 @@
             grid-column: span 1;
         }
         
-        @media (max-width: 430px) {
-            .michelada-options-card {
-                grid-template-columns: 1fr 1fr;
-                grid-auto-flow: dense;
-            }
-            
-            .michelada-options-card .option-section:nth-child(1),
-            .michelada-options-card .option-section:nth-child(4) {
-                grid-column: span 2;
-            }
-            
-            .michelada-options-card .option-section:nth-child(2),
-            .michelada-options-card .option-section:nth-child(3) {
-                grid-column: span 1;
-            }
-        }
-
-        .michelada-options-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-card);
-        }
-
-        .option-section {
-            margin-bottom: 0.8rem;
-            padding: 0.25rem 0;
-            text-align: center;
-        }
-
-        .option-section:last-child {
-            margin-bottom: 0;
-        }
-
-        .option-title {
-            font-family: var(--font-script);
-            font-size: 1.35rem;
-            color: var(--red-polarix);
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            margin-bottom: 0.4rem;
-            text-align: center;
-            font-weight: normal;
-        }
-
-        .option-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 0.4rem 0.6rem;
-            align-items: start;
-        }
-
+            @media (max-width: 430px) {
+        /* Ajustes de tamaño y espaciado, sin cambios de estructura */
+        .txt-menu { font-size: 4rem; }
+        .txt-liquid { font-size: 3rem; margin-top: 0.8rem; }
+        .size-value, .price-value { font-size: 1.8rem; min-width: 110px; }
+        .menu-u::after { font-size: 0.8em; top: -0.7em; right: -0.1em; }
+        .modal-content { max-width: 95%; max-height: 95%; }
+    
+        /* Mantener una sola columna en Micheladas (ya es 1fr por defecto) */
+        .michelada-options-card { padding: 1rem 0.8rem; }
+        .fusiones-section { padding: 1rem 0.8rem; }
+        .fusiones-title { font-size: 1.4rem; }
+        /* Ancho fijo al 30% para que siempre sean 3 por fila */
+        .fusion-item { width: 30%; max-width: 100px; }
+        .fusion-item img { max-height: 100px; }
+        .fusion-item .sabor { font-size: 0.7rem; }
+    
+        .nevado-info-card,
+        .fishbowl-container { padding: 1.2rem 0.8rem; }
+        .nevado-slogan,
+        .fishbowl-slogan { font-size: 1.3rem; }
+        .nevado-price-row .price-value,
+        .fishbowl-prices .price-value { font-size: 1.6rem; }
+        .nevado-desc { font-size: 0.8rem; }
+    
+        .fishbowl-image-item { width: 45%; max-width: 140px; }
+        .fishbowl-image-item img { max-height: 140px; }
+        .fishbowl-image-item .image-name { font-size: 0.7rem; }
+    
+        /* Ajustes de adornos (solo posición/tamaño, no afectan la estructura) */
+        .decor-inner-sparkle { width: 25px; height: 25px; left: 15px; top: 60px; }
+        .decor-inner-burst-top { width: 40px; height: 40px; right: 15px; top: 60px; }
+        .decor-inner-burst-left { width: 40px; height: 40px; left: 10px; }
+        .decor-inner-star-tail { width: 60px; height: 60px; right: 5px; bottom: 10px; }
+        .deco-sparkle-top-left { width: 25px; height: 25px; left: 12px; top: 80px; }
+        .deco-burst-top-right { width: 35px; height: 35px; right: 12px; top: 80px; }
+        .deco-star-tail-bottom-right { width: 60px; height: 60px; right: 10px; bottom: 20px; }
+        .decor-sparkles-top { width: 25px; height: 25px; left: 20px; top: 30px; }
+        .decor-burst-top { width: 40px; height: 40px; right: 15px; top: 45px; }
+        .decor-burst-left { width: 40px; height: 40px; left: 12px; top: 160px; }
+        .decor-star-tail { width: 60px; height: 60px; right: 5px; bottom: 10px; }
+    
+        /* Ajustes para opciones de Micheladas (sin cambiar columnas) */
+        .michelada-options-card .option-grid { gap: 0.3rem !important; }
+        .michelada-options-card .option-item { font-size: 0.98rem !important; padding: 0.35rem 0.2rem !important; }
+        .michelada-options-card .option-item .option-price { margin-top: 0.12rem !important; }
+        .michelada-options-card .option-item.full-width { flex-direction: row !important; }
+        .option-grid { grid-template-columns: repeat(2, 1fr); } /* ya era así, lo dejo */
+    }
         .option-item {
             font-family: var(--font-poppins);
             font-size: 0.98rem;
