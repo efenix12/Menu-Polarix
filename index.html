@@ -192,7 +192,6 @@
             padding: 0.5rem 1.5rem 0;
         }
 
-        /* ===== ADORNOS ORIGINALES (HOME) con animaciones ===== */
         .vector-decor {
             position: absolute;
             pointer-events: none;
@@ -427,7 +426,6 @@
             z-index: 0;
         }
 
-        /* ===== ADORNOS DECORATIVOS (los mismos que en home) con animaciones ===== */
         .decor-inner {
             position: absolute;
             pointer-events: none;
@@ -468,7 +466,6 @@
             animation: pulse 4s ease-in-out infinite;
         }
 
-        /* ===== ADORNOS ORIGINALES (MICHELADAS) con animaciones ===== */
         .deco-sparkle {
             position: absolute;
             z-index: 5;
@@ -636,16 +633,6 @@
             box-shadow: var(--shadow-card);
         }
 
-        .intro-slogan {
-            font-family: var(--font-script);
-            color: var(--red-polarix);
-            font-size: 1.6rem;
-            margin-bottom: 0;
-            font-weight: normal;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
         .hero-slogan {
             font-family: var(--font-script);
             color: var(--red-polarix);
@@ -794,8 +781,11 @@
             z-index: 1;
             animation: slideUp 0.5s ease 0.3s both;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            /* Siempre una columna para las secciones (BASE, SABOR, etc.) */
-            display: block;
+            /* ===== FORZADO A 2 COLUMNAS (WEB Y MÓVIL) ===== */
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 1.5rem 2rem !important;
+            align-items: start !important;
         }
 
         .michelada-options-card:hover {
@@ -804,14 +794,10 @@
         }
 
         .option-section {
-            margin-bottom: 1.5rem;
+            margin: 0;
             padding: 0.25rem 0;
             text-align: center;
             width: 100%;
-        }
-
-        .option-section:last-child {
-            margin-bottom: 0;
         }
 
         .option-title {
@@ -942,7 +928,7 @@
             margin-bottom: 1rem;
         }
 
-        /* Grid de Fusiones: SIEMPRE 3 COLUMNAS para simetría perfecta */
+        /* Grid de Fusiones: SIEMPRE 3 COLUMNAS */
         .fusiones-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -1354,9 +1340,9 @@
                 max-height: 95%;
             }
 
-            /* Ajustes de padding y márgenes */
             .michelada-options-card {
                 padding: 1rem 0.8rem;
+                gap: 0.8rem 1rem !important; /* Reducimos el gap en móvil */
             }
             .fusiones-section {
                 padding: 1rem 0.8rem;
@@ -1413,7 +1399,7 @@
                 padding: 0.35rem 0.2rem 0.1rem;
             }
 
-            /* Ajustes de adornos (solo posición/tamaño) */
+            /* Ajustes de adornos */
             .decor-inner-sparkle {
                 width: 25px;
                 height: 25px;
@@ -1480,22 +1466,27 @@
                 bottom: 10px;
             }
 
-            /* Ajustes finos para Micheladas en móvil */
+            /* Ajustes finos en móvil */
             .michelada-options-card .option-grid {
                 gap: 0.3rem !important;
             }
             .michelada-options-card .option-item {
-                font-size: 0.98rem !important;
-                padding: 0.35rem 0.2rem !important;
+                font-size: 0.9rem !important;
+                padding: 0.25rem 0.1rem !important;
             }
             .michelada-options-card .option-item .option-price {
                 margin-top: 0.12rem !important;
+                font-size: 0.8rem;
             }
             .michelada-options-card .option-item.full-width {
                 flex-direction: row !important;
+                font-size: 0.9rem !important;
             }
             .option-note {
-                font-size: 0.7rem;
+                font-size: 0.65rem;
+            }
+            .option-title {
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -1508,12 +1499,8 @@
             <!-- ================= HOME ================= -->
             <div id="view-home">
                 <div class="home-top-curve"></div>
-
                 <div class="home-hero-section">
-
-                    <div class="cup-placeholder">
-                        <!-- <img src="vaso.png" alt="Vaso" style="width:100%; height:100%; object-fit:contain;" /> -->
-                    </div>
+                    <div class="cup-placeholder"></div>
 
                     <svg class="vector-decor decor-sparkles-top" viewBox="0 0 30 30" fill="none" stroke="var(--yellow-polarix)" stroke-width="1.5">
                         <path d="M7 3L9.5 8L15 9.5L9.5 11L7 16L4.5 11L-1 9.5L4.5 8Z" fill="var(--yellow-polarix)"/>
@@ -1546,7 +1533,6 @@
                     </div>
                 </div>
 
-                <!-- NAVEGACIÓN -->
                 <div class="home-nav-section">
                     <div class="home-categories-menu">
                         <div class="category-row-btn" onclick="openCategory('view-granizados')">
@@ -1590,33 +1576,27 @@
 
             <!-- ================= GRANIZADOS ================= -->
             <div id="view-granizados" class="menu-section">
-                <!-- Adornos decorativos -->
                 <svg class="decor-inner decor-inner-sparkle" viewBox="0 0 30 30" fill="none" stroke="var(--yellow-polarix)" stroke-width="1.5">
                     <path d="M7 3L9.5 8L15 9.5L9.5 11L7 16L4.5 11L-1 9.5L4.5 8Z" fill="var(--yellow-polarix)"/>
                     <path d="M20 14L21.5 17.5L25 18L21.5 18.5L20 22L18.5 18.5L15 18L18.5 17.5Z" fill="var(--yellow-polarix)"/>
                 </svg>
-
                 <svg class="decor-inner decor-inner-burst-top" viewBox="0 0 80 80">
                     <line x1="15" y1="65" x2="35" y2="35" stroke="var(--yellow-polarix)" stroke-width="3" stroke-linecap="round" />
                     <line x1="38" y1="68" x2="55" y2="25" stroke="var(--yellow-polarix)" stroke-width="3" stroke-linecap="round" />
                     <line x1="60" y1="65" x2="75" y2="30" stroke="var(--yellow-polarix)" stroke-width="3" stroke-linecap="round" />
                 </svg>
-
                 <svg class="decor-inner decor-inner-burst-left" viewBox="0 0 70 70">
                     <line x1="50" y1="15" x2="25" y2="35" stroke="var(--yellow-polarix)" stroke-width="2.5" stroke-linecap="round" />
                     <line x1="55" y1="35" x2="25" y2="55" stroke="var(--yellow-polarix)" stroke-width="2.5" stroke-linecap="round" />
                     <line x1="45" y1="55" x2="30" y2="70" stroke="var(--yellow-polarix)" stroke-width="2.5" stroke-linecap="round" />
                 </svg>
-
                 <svg class="decor-inner decor-inner-star-tail" viewBox="0 0 100 120">
                     <path d="M10,110 Q50,90 60,50" fill="none" stroke="var(--yellow-polarix)" stroke-width="2.5" stroke-linecap="round"/>
                     <polygon points="60,25 64,37 76,37 66,45 70,57 60,49 50,57 54,45 44,37 56,37" fill="var(--yellow-polarix)" stroke="var(--yellow-polarix)" stroke-width="1"/>
                 </svg>
 
                 <section class="wave-header">
-                    <span class="txt-menu">
-                        <span class="menu-text">MEN</span><span class="menu-u">U</span>
-                    </span>
+                    <span class="txt-menu"><span class="menu-text">MEN</span><span class="menu-u">U</span></span>
                     <span class="txt-liquid">Granizados</span>
                 </section>
 
@@ -1654,33 +1634,27 @@
 
             <!-- ================= NEVADOS ================= -->
             <div id="view-nevados" class="menu-section">
-                <!-- Adornos decorativos -->
                 <svg class="decor-inner decor-inner-sparkle" viewBox="0 0 30 30" fill="none" stroke="var(--yellow-polarix)" stroke-width="1.5">
                     <path d="M7 3L9.5 8L15 9.5L9.5 11L7 16L4.5 11L-1 9.5L4.5 8Z" fill="var(--yellow-polarix)"/>
                     <path d="M20 14L21.5 17.5L25 18L21.5 18.5L20 22L18.5 18.5L15 18L18.5 17.5Z" fill="var(--yellow-polarix)"/>
                 </svg>
-
                 <svg class="decor-inner decor-inner-burst-top" viewBox="0 0 80 80">
                     <line x1="15" y1="65" x2="35" y2="35" stroke="var(--yellow-polarix)" stroke-width="3" stroke-linecap="round" />
                     <line x1="38" y1="68" x2="55" y2="25" stroke="var(--yellow-polarix)" stroke-width="3" stroke-linecap="round" />
                     <line x1="60" y1="65" x2="75" y2="30" stroke="var(--yellow-polarix)" stroke-width="3" stroke-linecap="round" />
                 </svg>
-
                 <svg class="decor-inner decor-inner-burst-left" viewBox="0 0 70 70">
                     <line x1="50" y1="15" x2="25" y2="35" stroke="var(--yellow-polarix)" stroke-width="2.5" stroke-linecap="round" />
                     <line x1="55" y1="35" x2="25" y2="55" stroke="var(--yellow-polarix)" stroke-width="2.5" stroke-linecap="round" />
                     <line x1="45" y1="55" x2="30" y2="70" stroke="var(--yellow-polarix)" stroke-width="2.5" stroke-linecap="round" />
                 </svg>
-
                 <svg class="decor-inner decor-inner-star-tail" viewBox="0 0 100 120">
                     <path d="M10,110 Q50,90 60,50" fill="none" stroke="var(--yellow-polarix)" stroke-width="2.5" stroke-linecap="round"/>
                     <polygon points="60,25 64,37 76,37 66,45 70,57 60,49 50,57 54,45 44,37 56,37" fill="var(--yellow-polarix)" stroke="var(--yellow-polarix)" stroke-width="1"/>
                 </svg>
 
                 <section class="wave-header">
-                    <span class="txt-menu">
-                        <span class="menu-text">MEN</span><span class="menu-u">U</span>
-                    </span>
+                    <span class="txt-menu"><span class="menu-text">MEN</span><span class="menu-u">U</span></span>
                     <span class="txt-liquid">Nevados</span>
                 </section>
 
@@ -1706,29 +1680,24 @@
                 <div class="product-grid" id="nevados-grid"></div>
             </div>
 
-            <!-- ================= MICHELADAS ================= -->
+            <!-- ================= MICHELADAS (2 COLUMNAS) ================= -->
             <div id="view-micheladas" class="menu-section">
-                <!-- Adornos originales -->
                 <svg class="deco-sparkle deco-sparkle-top-left" viewBox="0 0 30 30" fill="none" stroke="var(--yellow-polarix)" stroke-width="1.5">
                     <path d="M7 3L9.5 8L15 9.5L9.5 11L7 16L4.5 11L-1 9.5L4.5 8Z" fill="var(--yellow-polarix)"/>
                     <path d="M20 14L21.5 17.5L25 18L21.5 18.5L20 22L18.5 18.5L15 18L18.5 17.5Z" fill="var(--yellow-polarix)"/>
                 </svg>
-
                 <svg class="deco-sparkle deco-burst-top-right" viewBox="0 0 80 80">
                     <line x1="15" y1="65" x2="35" y2="35" stroke="var(--yellow-polarix)" stroke-width="3" stroke-linecap="round" />
                     <line x1="38" y1="68" x2="55" y2="25" stroke="var(--yellow-polarix)" stroke-width="3" stroke-linecap="round" />
                     <line x1="60" y1="65" x2="75" y2="30" stroke="var(--yellow-polarix)" stroke-width="3" stroke-linecap="round" />
                 </svg>
-
                 <svg class="deco-sparkle deco-star-tail-bottom-right" viewBox="0 0 100 120">
                     <path d="M10,110 Q50,90 60,50" fill="none" stroke="var(--yellow-polarix)" stroke-width="2.5" stroke-linecap="round"/>
                     <polygon points="60,25 64,37 76,37 66,45 70,57 60,49 50,57 54,45 44,37 56,37" fill="var(--yellow-polarix)" stroke="var(--yellow-polarix)" stroke-width="1"/>
                 </svg>
 
                 <section class="wave-header">
-                    <span class="txt-menu">
-                        <span class="menu-text">MEN</span><span class="menu-u">U</span>
-                    </span>
+                    <span class="txt-menu"><span class="menu-text">MEN</span><span class="menu-u">U</span></span>
                     <span class="txt-liquid">Micheladas</span>
                 </section>
 
@@ -1741,7 +1710,9 @@
                     <p class="hero-slogan"><span class="invert">¡</span>ÁRMALA COMO PREFIERAS<span class="invert">!</span></p>
                 </div>
 
+                <!-- TARJETA PRINCIPAL: SIEMPRE 2 COLUMNAS (Base | Sabor) / (Escarchados | Incluye) -->
                 <div class="michelada-options-card">
+                    <!-- Columna 1: Base -->
                     <div class="option-section">
                         <h3 class="option-title">ELIGE TU BASE</h3>
                         <div class="option-grid">
@@ -1753,6 +1724,7 @@
                         </div>
                     </div>
 
+                    <!-- Columna 2: Sabor -->
                     <div class="option-section">
                         <h3 class="option-title">ELIGE TU SABOR</h3>
                         <div class="option-grid">
@@ -1766,6 +1738,7 @@
                         </div>
                     </div>
 
+                    <!-- Columna 3: Escarchados (queda debajo de Base) -->
                     <div class="option-section">
                         <h3 class="option-title">ESCARCHADOS</h3>
                         <div class="option-grid">
@@ -1776,6 +1749,7 @@
                         </div>
                     </div>
 
+                    <!-- Columna 4: Incluye (queda debajo de Sabor) -->
                     <div class="option-section">
                         <h3 class="option-title">INCLUYE</h3>
                         <div class="option-grid">
@@ -1793,43 +1767,23 @@
                     <div class="fusiones-grid">
                         <div class="fusion-item">
                             <img src="IMAGENES/img721.jpg" alt="Maracuyá y Cereza" />
-                            <div class="fusion-names">
-                                <span class="sabor">MARACUYÁ</span>
-                                <span class="separator">·</span>
-                                <span class="sabor">CEREZA</span>
-                            </div>
+                            <div class="fusion-names"><span class="sabor">MARACUYÁ</span><span class="separator">·</span><span class="sabor">CEREZA</span></div>
                         </div>
                         <div class="fusion-item">
                             <img src="IMAGENES/img722.jpg" alt="Maracuyá y Mango" />
-                            <div class="fusion-names">
-                                <span class="sabor">MARACUYÁ</span>
-                                <span class="separator">·</span>
-                                <span class="sabor">MANGO</span>
-                            </div>
+                            <div class="fusion-names"><span class="sabor">MARACUYÁ</span><span class="separator">·</span><span class="sabor">MANGO</span></div>
                         </div>
                         <div class="fusion-item">
                             <img src="IMAGENES/img723.jpg" alt="Cereza y Mango" />
-                            <div class="fusion-names">
-                                <span class="sabor">CEREZA</span>
-                                <span class="separator">·</span>
-                                <span class="sabor">MANGO</span>
-                            </div>
+                            <div class="fusion-names"><span class="sabor">CEREZA</span><span class="separator">·</span><span class="sabor">MANGO</span></div>
                         </div>
                         <div class="fusion-item">
                             <img src="IMAGENES/img717.jpg" alt="Sandía y Cereza" />
-                            <div class="fusion-names">
-                                <span class="sabor">SANDÍA</span>
-                                <span class="separator">·</span>
-                                <span class="sabor">CEREZA</span>
-                            </div>
+                            <div class="fusion-names"><span class="sabor">SANDÍA</span><span class="separator">·</span><span class="sabor">CEREZA</span></div>
                         </div>
                         <div class="fusion-item">
                             <img src="IMAGENES/img719.jpg" alt="Tamarindo y Maracuyá" />
-                            <div class="fusion-names">
-                                <span class="sabor">TAMARINDO</span>
-                                <span class="separator">·</span>
-                                <span class="sabor">MARACUYÁ</span>
-                            </div>
+                            <div class="fusion-names"><span class="sabor">TAMARINDO</span><span class="separator">·</span><span class="sabor">MARACUYÁ</span></div>
                         </div>
                     </div>
                 </div>
@@ -1837,33 +1791,27 @@
 
             <!-- ================= FISH BOWLS ================= -->
             <div id="view-fishbowls" class="menu-section">
-                <!-- Adornos decorativos -->
                 <svg class="decor-inner decor-inner-sparkle" viewBox="0 0 30 30" fill="none" stroke="var(--yellow-polarix)" stroke-width="1.5">
                     <path d="M7 3L9.5 8L15 9.5L9.5 11L7 16L4.5 11L-1 9.5L4.5 8Z" fill="var(--yellow-polarix)"/>
                     <path d="M20 14L21.5 17.5L25 18L21.5 18.5L20 22L18.5 18.5L15 18L18.5 17.5Z" fill="var(--yellow-polarix)"/>
                 </svg>
-
                 <svg class="decor-inner decor-inner-burst-top" viewBox="0 0 80 80">
                     <line x1="15" y1="65" x2="35" y2="35" stroke="var(--yellow-polarix)" stroke-width="3" stroke-linecap="round" />
                     <line x1="38" y1="68" x2="55" y2="25" stroke="var(--yellow-polarix)" stroke-width="3" stroke-linecap="round" />
                     <line x1="60" y1="65" x2="75" y2="30" stroke="var(--yellow-polarix)" stroke-width="3" stroke-linecap="round" />
                 </svg>
-
                 <svg class="decor-inner decor-inner-burst-left" viewBox="0 0 70 70">
                     <line x1="50" y1="15" x2="25" y2="35" stroke="var(--yellow-polarix)" stroke-width="2.5" stroke-linecap="round" />
                     <line x1="55" y1="35" x2="25" y2="55" stroke="var(--yellow-polarix)" stroke-width="2.5" stroke-linecap="round" />
                     <line x1="45" y1="55" x2="30" y2="70" stroke="var(--yellow-polarix)" stroke-width="2.5" stroke-linecap="round" />
                 </svg>
-
                 <svg class="decor-inner decor-inner-star-tail" viewBox="0 0 100 120">
                     <path d="M10,110 Q50,90 60,50" fill="none" stroke="var(--yellow-polarix)" stroke-width="2.5" stroke-linecap="round"/>
                     <polygon points="60,25 64,37 76,37 66,45 70,57 60,49 50,57 54,45 44,37 56,37" fill="var(--yellow-polarix)" stroke="var(--yellow-polarix)" stroke-width="1"/>
                 </svg>
 
                 <section class="wave-header">
-                    <span class="txt-menu">
-                        <span class="menu-text">MEN</span><span class="menu-u">U</span>
-                    </span>
+                    <span class="txt-menu"><span class="menu-text">MEN</span><span class="menu-u">U</span></span>
                     <span class="txt-liquid">FISH Bowls</span>
                 </section>
 
@@ -1874,14 +1822,8 @@
                 <div class="fishbowl-container">
                     <p class="hero-slogan"><span class="invert">¡</span>LA MÁS GRANDE. MÁS FRÍA<br />Y MÁS DIVERTIDA<span class="invert">!</span></p>
                     <div class="fishbowl-prices">
-                        <div class="price-item">
-                            <span class="size-label">MEDIUM</span>
-                            <span class="price-value">60K</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="size-label">LARGE</span>
-                            <span class="price-value">125K</span>
-                        </div>
+                        <div class="price-item"><span class="size-label">MEDIUM</span><span class="price-value">60K</span></div>
+                        <div class="price-item"><span class="size-label">LARGE</span><span class="price-value">125K</span></div>
                     </div>
                     <div class="fishbowl-images">
                         <div class="fishbowl-image-item">
@@ -1896,7 +1838,7 @@
                 </div>
             </div>
 
-            <!-- ===== MODAL PARA AMPLIAR IMAGEN ===== -->
+            <!-- ===== MODAL ===== -->
             <div class="modal-overlay" id="image-modal">
                 <div class="modal-content">
                     <button class="modal-close" id="modal-close-btn">&times;</button>
@@ -1908,7 +1850,6 @@
     </div>
 
     <script>
-        // ===== DATOS DE PRODUCTOS =====
         const granizadosData = [
             { name: 'Astro', file: 'IMAGENES/MENÚ%20POLARIXX-1-18-páginas-imágenes-2.jpg' },
             { name: 'Estelar', file: 'IMAGENES/MENÚ%20POLARIXX-1-18-páginas-imágenes-3.jpg' },
@@ -1930,30 +1871,23 @@
         function renderProducts(containerId, data) {
             const container = document.getElementById(containerId);
             if (!container) return;
-
             data.forEach((item, index) => {
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.style.setProperty('--i', index);
                 card.setAttribute('data-image', item.file);
-
                 const img = document.createElement('img');
                 img.src = item.file;
                 img.alt = item.name;
-
                 const nameSpan = document.createElement('span');
                 nameSpan.className = 'product-name';
                 nameSpan.textContent = item.name;
-
                 card.appendChild(img);
                 card.appendChild(nameSpan);
-
                 card.addEventListener('click', function(e) {
                     e.stopPropagation();
-                    const imageUrl = this.getAttribute('data-image');
-                    openModal(imageUrl);
+                    openModal(this.getAttribute('data-image'));
                 });
-
                 container.appendChild(card);
             });
         }
@@ -1961,7 +1895,6 @@
         renderProducts('granizados-grid', granizadosData);
         renderProducts('nevados-grid', nevadosData);
 
-        // ===== MODAL =====
         const modalOverlay = document.getElementById('image-modal');
         const modalImg = document.getElementById('modal-image');
         const closeBtn = document.getElementById('modal-close-btn');
@@ -1978,20 +1911,13 @@
         }
 
         closeBtn.addEventListener('click', closeModal);
-
         modalOverlay.addEventListener('click', function(e) {
-            if (e.target === modalOverlay) {
-                closeModal();
-            }
+            if (e.target === modalOverlay) closeModal();
         });
-
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
+            if (e.key === 'Escape') closeModal();
         });
 
-        // ===== FUNCIONES DE NAVEGACIÓN =====
         function openCategory(viewId) {
             document.getElementById('view-home').style.display = 'none';
             document.querySelectorAll('.menu-section').forEach(section => section.classList.remove('active'));
@@ -2005,8 +1931,7 @@
             document.querySelectorAll('.menu-section').forEach(section => section.classList.remove('active'));
             document.getElementById('view-home').style.display = 'flex';
             document.querySelector('.scrollable-content').scrollTop = 0;
-            const home = document.getElementById('view-home');
-            void home.offsetWidth;
+            void document.getElementById('view-home').offsetWidth;
         }
     </script>
 </body>
