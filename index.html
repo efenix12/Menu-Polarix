@@ -928,19 +928,19 @@
         }
 
         /* Grid de Fusiones: SIEMPRE 3 COLUMNAS */
-        .fusiones-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+                .fusiones-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1rem 0.8rem;
-            justify-items: center;
         }
-
+        
         .fusion-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100%;
-            max-width: 100%;
+            flex: 0 0 calc(33.333% - 0.8rem);
+            max-width: calc(33.333% - 0.8rem);
             transition: transform 0.3s ease;
             cursor: default;
         }
