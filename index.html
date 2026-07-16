@@ -533,15 +533,13 @@
             position: relative;
             display: inline;
         }
-
+        
         .menu-u::after {
             content: "´";
-            position: relative;   /* ← cambiamos a relative */
-            display: inline-block; /* ← para que admita margin */
-            left: 0;
-            top: 0;
-            transform: none;
-            margin-top: -60px;     /* ← mueve hacia arriba */
+            position: absolute;
+            left: 50%;
+            top: -0.3em;          /* ← Ajusta este valor para subir/bajar la tilde */
+            transform: translateX(-50%);
             font-size: 0.95em;
             font-family: Arial, sans-serif;
             color: white;
