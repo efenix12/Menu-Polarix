@@ -1357,9 +1357,12 @@
             .fusion-item {
                 flex: 0 0 calc(50% - 0.5rem);
                 max-width: calc(50% - 0.5rem);
-            }
             .fusion-item img {
-                max-height: 100px;
+                width: 100%;
+                height: auto;
+                max-height: none;
+                object-fit: contain;
+                border-radius: 12px;
             }
             .fusion-item .sabor {
                 font-size: 0.7rem;
